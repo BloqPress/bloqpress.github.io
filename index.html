@@ -27,9 +27,27 @@
             height: 70px;
             left: 50%;
             top: 50%;
-            margin: -55px 0 0 -140px;
+            margin: -85px 0 0 -140px;
         }
-        small {
+        small.tagline {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            top: 50%;
+            margin: 0;
+        }
+        .btn-default {
+            display: block;
+            position: absolute;
+            width: 100px;
+            left: 50%;
+            top: 50%;
+            margin: 30px 0 0 -65px;
+        }
+        small.footer {
             display: block;
             position: fixed;
             bottom: 0;
@@ -54,6 +72,17 @@
         a.link:hover {
             opacity: 0.5;
         }
+        a.btn {
+            background: #FFF;
+            border: 1px solid #CCC;
+            border-radius: 3px;
+            font-size: 12px;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        a.btn:hover {
+            background: #CCC;
+        }
     </style>
     
 </head>
@@ -62,9 +91,12 @@
  
 <a href="https://twitter.com/bloqpress" target="_blank" class="link">
     <img class="logo" src="img/bloqpress-logo.png" />
+    <small class="tagline">The Blockchain-Based CMS</small>
 </a>
+    
+<a href="http://eepurl.com/c9MaUz" class="btn btn-default">LEARN MORE</a>
 
-<small>Blockchain-Based CMS from the <a href="http://smalley.my">creator</a> of MongoPress</small>
+<small class="footer">A community project by the <a href="http://meetup.com/blockchain-developers-malaysia">Blockchain Developers of Malaysia</a> - sponsored by <a href="http://neuroware.io">Neuroware</a></small>
     
 </body>
 </html>
