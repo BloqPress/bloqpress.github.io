@@ -3,6 +3,7 @@ git/
 
 secret.json
 admin/secrets.js
+admin/js/cortex.js
 
 *.swp
 *.log

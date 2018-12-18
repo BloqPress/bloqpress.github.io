@@ -2129,7 +2129,7 @@ var cortex = {
             cortex.ux.loader(true);
             cortex.ux.tables();
             $.ajax({
-                url: '/admin/html/modals.html',
+                url: ethereum_secrets.url + 'html/modals.html',
                 dataType: 'html',
                 success: function(modals)
                 {
