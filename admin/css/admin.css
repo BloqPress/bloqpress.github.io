@@ -1,0 +1,143 @@
+/*
+
+RESETS
+
+*/
+html, body,
+html body {
+    display: block;
+    position: absolute;
+    background: #EFEFEF;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.alert-block {
+    display: block;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.row.formed {
+    text-align: center;
+}
+.row.formed .bp-logo {
+    font-size: 26px;
+    margin: 30px 0;
+    color: #069;
+}
+.pull-right {
+    float: right;
+}
+
+/*
+
+CONTENT
+
+*/
+html body.app,
+#content {
+    background: #C3D0DE;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+/*
+
+BUTTONS
+
+*/
+.btn.btn-primary {
+    background: #069;
+}
+.btn.btn-primary:hover {
+    background: #333;
+}
+.btn.btn-secondary {
+    background: #888;
+}
+.btn.btn-secondary:hover {
+    background: #333;
+}
+
+/*
+
+CARDS
+
+*/
+.card .card-header {
+    background: #DDD;
+}
+
+/*
+
+FORMS
+
+*/
+.form-horizontal .control-label {
+    background: #EEE;
+    border: 1px solid #CCC;
+    line-height: 35px;
+    margin: 0 -16px 0 0;
+    border-radius: 3px 0 0 3px;
+}
+.form-horizontal .form-control {
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #CCC;
+    background: #FFFEEE;
+}
+.form-horizontal .form-group.row {
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: -45px;
+    text-align: left;
+}
+.form-horizontal .form-group.row > div {
+    padding-right: 30px;
+}
+
+/*
+
+MODALS
+
+*/
+.modal-open .modal.fade:after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: #333;
+    z-index: 999;
+}
+.modal-open .modal.fade.in:after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    background: #333;
+    z-index: 999;
+}
+.modal-open .modal.fade {
+    opacity: 0;
+}
+.modal-open .modal.fade.in {
+    opacity: 1;
+}
+.modal-open .modal .modal-dialog {
+    z-index: 9999;
+}
+.modal-open .modal.fade .modal-dialog {
+    top: -100%;
+}
+.modal-open .modal.fade.in .modal-dialog {
+    top: 60px;
+}

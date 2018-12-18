@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<title>ARTICLES | BLOQPRESS</title>
+    
+<link href="../admin/css/bootstrap.css" rel="stylesheet">  
+<link href="../admin/css/demo.css" rel="stylesheet">  
+    
+<script src="../admin/js/jquery.min.js"></script>
+<script src="../admin/js/bootstrap.js"></script>
+<script src="../admin/js/isotope.js"></script>
+<script src="../admin/secrets.js"></script>
+<script src="../admin/contracts.js"></script>
+<script src="../admin/js/web3.min.js"></script>
+<script src="../admin/js/cms.js"></script>
+<script src="../admin/js/demo.js"></script>
+    
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                bloq.press
+                <small> - the <strong>smart contract</strong> based cms</small>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                    data-target="#mainNav" 
+                    aria-controls="mainNav" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../">
+                            about
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link">
+                            articles
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin/">
+                            login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm" href="https://neuroware.us8.list-manage.com/subscribe?u=510ca926990f2cef070cbe3d2&id=0a966cf6a8" target="_blank">
+                            register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container top">
+        
+        <div id="loading-wrapper-content" class="" data-label="FETCHING">
+            <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+                <div></div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 bp-filters btn-group"></div>
+        </div>
+        
+        <div 
+             
+             /* GET ARTICLE VIA SMART CONTRACTS */
+             class="row bp articles" 
+             data-address="0xfb75097C7Cf0960CF46A06eCD7fE65530495e40E" 
+             data-network="http://104.215.146.84:20545"
+             
+        ></div>
+    </div>
+    
+    <small class="credits">
+        this website is powered by bloq.press<br>
+        bloq.press is an <a href="http://r1.my" target="_blank">R1</a> project
+    </small>
+    
+</body>
+</html>

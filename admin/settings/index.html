@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<title>SETTINGS | BLOQPRESS</title>
+    
+<link href="../css/bootstrap.css" rel="stylesheet">  
+<link href="../css/bloqpress.css" rel="stylesheet">  
+<link href="../css/cortex.css" rel="stylesheet">  
+<link href="../css/tables.css" rel="stylesheet">  
+<link href="../css/admin.css" rel="stylesheet">  
+    
+<script src="../secrets.js"></script>
+<script src="../contracts.js"></script>
+<script src="options.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/qrcode.js"></script>
+<script src="../js/tables.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/web3.min.js"></script>
+<script src="../js/eth-wallet.js"></script>
+<script src="../js/ethereumjs-tx.js"></script>
+<script src="../js/ethereum.js"></script>
+<script src="../js/muuri.js"></script>
+<script src="../js/cortex.js"></script>
+    
+</head>
+    
+<body class="app">
+
+<nav id="header">
+    {{#header}}
+        <a href="{{href}}" class="{{css}}">{{text}}</a>
+    {{/header}}
+</nav>
+
+<nav id="sidebar">
+    {{#sidebar}}
+        <a href="{{href}}" class="{{css}}">{{text}}</a>
+    {{/sidebar}}
+</nav>
+
+<div id="content">
+    <div class="row">
+        <div id="loading-wrapper-content" class="" data-label="FETCHING">
+            <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+                <div></div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            
+            {{#accounts}}
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="heading display">
+                        {{name}} <small>Public Information</small>
+                    </h4>
+                </div>
+                <div class="panel-body"> 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="activity keys">
+                                <li>
+                                    <span class="alert alert-info alert-block">
+                                        <strong>Address</strong>
+                                    </span>
+                                    <div class="qr-holder" data-content="0x{{address}}"></div>
+                                    <span class="alert alert-warning alert-block">
+                                        <small>Address:</small>
+                                        <br /><small>Network: {{netname}}</small>
+                                        <br /><small>0x{{address}}</small>
+                                        <br /><small>Balance: {{balance}}</small>
+                                        <br /><small>Transactions: {{txs}}</small>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<div class="col-md-2"></div>-->
+                        <div class="col-md-6">
+                            <ul class="activity keys">
+                                <li>
+                                    <span class="alert alert-info alert-block">
+                                        <strong>Public Key</strong>
+                                    </span>
+                                    <div class="qr-holder" data-content="{{key}}"></div>
+                                    <span class="alert alert-warning alert-block">
+                                        <small>Public Key:</small>
+                                        <br /><small>Network: {{netname}}</small>
+                                        <br /><small>{{key}}</small>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{/accounts}}
+            {{^accounts}}
+            
+                <alert class="alert alert-warning alert-block">
+                    NO ACCOUNTS SAVED IN LOCAL STORAGE
+                </alert>
+            
+            {{/accounts}}
+        </div>
+        
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="heading display">
+                        Access Private Keys
+                    </h4>
+                </div>
+                <div class="panel-body padless list"> 
+                    <form class="form-horizontal recover-keys">
+                        <select class="form-control neuron-accounts" id="account">
+                            <option value="">-- Select Account --</option>
+                        </select>
+                        <hr>
+                        <div class="form-group">
+                            <label for="username" class="col-sm-5 control-label">Password</label>
+                            <div class="col-sm-7">
+                                <input id="username" class="form-control data-input" placeholder="Valid username needed ..." type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-5 control-label">Password</label>
+                            <div class="col-sm-7">
+                                <input id="password" class="form-control data-input" placeholder="Authentication required ..." type="password">
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary btn-block btn-xl">RECOVER</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="heading display">
+                        Clear Device
+                    </h4>
+                </div>
+                <div class="panel-body padless list"> 
+                    <form class="form-horizontal recover-keys">
+                        <alert class="alert alert-warning alert-block">
+                            <small>REMOVE WALLET DATA FROM LOCALSTORAGE</small>
+                        </alert>
+                        <hr>
+                        <button class="btn btn-danger btn-block btn-xl btn-clear-device">CLEAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div id="loading-wrapper" class="loading" data-label="LOADING">
+    <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+        <div></div>
+    </div>
+</div>
+    
+</body>
+</html>

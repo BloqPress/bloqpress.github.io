@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<title>CONTRACTS | CASTOR WALLET</title>
+    
+<link href="../css/bootstrap.css" rel="stylesheet">  
+<link href="../css/bloqpress.css" rel="stylesheet">  
+<link href="../css/cortex.css" rel="stylesheet">  
+<link href="../css/tables.css" rel="stylesheet">  
+<link href="../css/admin.css" rel="stylesheet">  
+    
+<script src="../secrets.js"></script>
+<script src="../contracts.js"></script>
+<script src="options.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/qrcode.js"></script>
+<script src="../js/tables.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/web3.min.js"></script>
+<script src="../js/eth-wallet.js"></script>
+<script src="../js/ethereumjs-tx.js"></script>
+<script src="../js/ethereum.js"></script>
+<script src="../js/muuri.js"></script>
+<script src="../js/cortex.js"></script>
+    
+</head>
+    
+<body class="app">
+
+<nav id="header">
+    {{#header}}
+        <a href="{{href}}" class="{{css}}">{{text}}</a>
+    {{/header}}
+</nav>
+
+<nav id="sidebar">
+    {{#sidebar}}
+        <a href="{{href}}" class="{{css}}">{{text}}</a>
+    {{/sidebar}}
+</nav>
+
+<div id="content">
+    <div class="row">
+        <div id="loading-wrapper-content" class="" data-label="FETCHING">
+            <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+                <div></div>
+            </div>
+        </div>
+        
+        {{#contract_count}}
+
+        <div class="col-md-12">
+            <alert class="alert alert-info alert-block">
+                <p>
+                    <strong>{{contract_count}} {{contract_word}} SAVED WITHIN LOCAL STORAGE</strong> 
+                </p>
+                <p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <hr>
+                            <a href="#" class="btn btn-plain btn-block btn-contract-new">Add Contract</a>
+                        </div>
+                        <div class="col-md-4">
+                            <hr>
+                            <a href="#" class="btn btn-plain btn-block btn-contract-template">Import Template</a>
+                        </div>
+                        <!--
+                        <div class="col-md-3">
+                            <hr>
+                            <a href="#" class="btn btn-plain btn-block btn-contract-launch">Launch Contract</a>
+                        </div>
+                        -->
+                        <div class="col-md-4">
+                            <hr>
+                            <a href="#" class="btn btn-block btn-danger btn-remove-all-contracts">Remove All</a>
+                        </div>
+                    </div>
+                </p>
+            </alert>
+            <hr>
+        </div>
+
+        {{/contract_count}}
+
+        {{#contracts}}
+        
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        {{name}} <small>{{address}}</small>
+                        <a href="#" class="btn btn-danger pull-right btn-remove-contract" style="margin-top:-7px; margin-right: 7px;" data-id="{{id}}">Remove</a> 
+                        <a href="#" class="btn btn-plain pull-right btn-panel-toggler" style="margin-top:-7px; margin-right: 7px;" data-text="Open">Close</a> 
+                    </div>
+                    <div class="card-body"> 
+                        <div class="row connect-contract" data-name="{{name}}">
+
+                            <!-- READ FUNCTIONS -->
+                            <div class="col-md-7">
+                                <alert class="alert alert-block alert-success">
+                                    {{web3.read}} <strong>READ-ONLY</strong> FUNCTIONS
+                                </alert>
+                                <div class="hidden-panel">
+                                <hr>
+                                {{#web3.reads}}
+                                    <div class="well">
+                                        <form class="read-functions form-horizontal" id="{{id}}-form" data-name="{{id}}" data-func="{{name}}">
+                                            <alert class="alert alert-block alert-info">
+                                                {{text}}
+                                                <button type="submit" class="btn pull-right btn-plain btn-xs btn-function-toggler" data-text="OPEN" style="margin-left: 6px;">CLOSE</button>
+                                                <button type="submit" class="btn pull-right btn-plain btn-xs">SCAN</button>
+                                            </alert>
+                                            <div class="hidden-function">
+                                                <hr style="border-color: transparent">
+                                                {{#inputs}}
+                                                    <div class="form-group row">
+                                                        <label for="{{id}}-{{name}}" class="col-sm-4 control-label">{{label}}</label>
+                                                        <div class="col-sm-8">
+                                                            <input id="{{id}}-{{name}}" class="form-control data-input" placeholder="Data type is {{type}} ..." type="text">
+                                                        </div>
+                                                    </div>
+                                                {{/inputs}}
+                                                <textarea id="{{id}}-results" class="form-control rows-{{outs}}" readonly="readonly"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                {{/web3.reads}}
+                                </div>
+                            </div>
+
+                            <!-- WRITE FUNCTIONS -->
+                            <div class="col-md-5">
+                                <alert class="alert alert-block alert-warning">
+                                    {{web3.write}} <strong>WRITE</strong> FUNCTIONS
+                                </alert>
+                                <div class="hidden-panel">
+                                    <hr>
+                                    <select class="form-control select-function">
+                                        <option value="">-- Select Function --</option>
+                                        {{#web3.writes}}
+                                            <option value="{{id}}-{{name}}">{{text}}</option>
+                                        {{/web3.writes}}
+                                    </select>
+
+                                    {{#web3.writes}}
+                                    <form class="function-inputs form-horizontal" id="{{id}}-{{name}}" data-name="{{id}}" data-func="{{name}}" style="display: none;">
+                                        <hr>
+                                        {{#inputs}}
+                                            <div class="form-group row">
+                                                <label for="{{id}}-{{name}}-{{index}}" class="col-sm-5 control-label">{{label}}</label>
+                                                <div class="col-sm-7">
+                                                    <input id="{{id}}-{{name}}-{{index}}" class="form-control data-input" placeholder="Data type is {{type}} ..." type="text">
+                                                </div>
+                                            </div>
+                                        {{/inputs}}
+                                        <hr>
+                                        <select class="form-control neuron-accounts" id="{{id}}-{{name}}-account">
+                                            <option value="">-- Select Account --</option>
+                                        </select>
+                                        <hr>
+                                        {{#payable}}
+                                        <div class="form-group row payable">
+                                            <label for="{{id}}-{{name}}-payable" class="col-sm-5 control-label">Value</label>
+                                            <div class="col-sm-7">
+                                                <input id="{{id}}-{{name}}-payable" class="form-control data-input" placeholder="Ether to include ..." type="text">
+                                            </div>
+                                        </div>
+                                        {{/payable}}
+                                        <div class="form-group row">
+                                            <label for="{{id}}-{{name}}-username" class="col-sm-5 control-label">Username</label>
+                                            <div class="col-sm-7">
+                                                <input id="{{id}}-{{name}}-username" class="form-control data-input" placeholder="Valid username needed ..." type="text">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="{{id}}-{{name}}-password" class="col-sm-5 control-label">Password</label>
+                                            <div class="col-sm-7">
+                                                <input id="{{id}}-{{name}}-password" class="form-control data-input" placeholder="Authentication required ..." type="password">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <button class="btn btn-plain btn-block btn-xl btn-debug-tx">DEBUG</button>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <button type="submit" class="btn btn-primary btn-block btn-xl">EXECUTE</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {{/web3.writes}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        {{/contracts}}
+        {{^contracts}}
+        <alert class="alert alert-warning alert-block">
+            <p><strong>NO CONTRACTS SAVED WITHIN LOCAL STORAGE YET</strong></p>
+            <p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <hr>
+                        <a href="#" class="btn btn-plain btn-block btn-contract-new">Add Contract</a>
+                    </div>
+                    <div class="col-md-4">
+                        <hr>
+                        <a href="#" class="btn btn-plain btn-block btn-contract-template">Import Template</a>
+                    </div>
+                    <div class="col-md-4">
+                        <hr>
+                        <a href="#" class="btn btn-plain btn-block btn-contract-launch">Launch Contract</a>
+                    </div>
+                </div>
+            </p>
+        </alert>
+        {{/contracts}}
+    </div>
+    
+</div>
+
+<div id="loading-wrapper" class="loading" data-label="LOADING">
+    <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+        <div></div>
+    </div>
+</div>
+    
+</body>
+</html>

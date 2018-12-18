@@ -1,0 +1,428 @@
+<div class="modal fade" id="default-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Modal Styling</h4>
+            </div>
+            <div class="modal-body">
+                CONTENT
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="send-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Transfer Ether</h4>
+            </div>
+            <div class="modal-body">
+                <form class="ethereum-transfer form-horizontal neuron-transfer" data-type="ether">
+                    <div class="form-group">
+                        <label for="transfer_from" class="col-sm-4 control-label">From</label>
+                        <div class="col-sm-8">
+                            <select class="form-control neuron-accounts" id="transfer_from">
+                                <option value="">-- Select Account --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_to" class="col-sm-4 control-label">To</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_to" class="form-control" placeholder="Valid address required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_value" class="col-sm-4 control-label">Amount</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_value" class="form-control" placeholder="Ether amount to send ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_user" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-block">SEND</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="new-account-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Add New Account</h4>
+            </div>
+            <div class="modal-body">
+                <form class="new-account form-horizontal">
+                    <div class="form-group">
+                        <label for="network" class="col-sm-4 control-label">Network</label>
+                        <div class="col-sm-8">
+                            <select class="form-control neuron-networks" id="network">
+                                <option value="">-- Select Network --</option>
+                            <select/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountname" class="col-sm-4 control-label">Name</label>
+                        <div class="col-sm-8">
+                            <input id="accountname" class="form-control" placeholder="Must be unique ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                            <input id="username" class="form-control" placeholder="Authentication required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input id="password" class="form-control" placeholder="Authentication required ..." type="password">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">CREATE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="send-token-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Transfer Tokens</h4>
+            </div>
+            <div class="modal-body">
+                <form class="token-transfer form-horizontal neuron-transfer" data-type="erc20">
+                    <input type="hidden" class="form-control" id="account">
+                    <input type="hidden" class="form-control" id="token">
+                    <div class="form-group">
+                        <label for="transfer_to" class="col-sm-4 control-label">To</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_to" class="form-control" placeholder="Valid address required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_value" class="col-sm-4 control-label">Amount</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_value" class="form-control" placeholder="Token amount to send ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_user" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-block">SEND</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="send-asset-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Transfer Asset</h4>
+            </div>
+            <div class="modal-body">
+                <form class="token-transfer form-horizontal neuron-transfer" data-type="erc721">
+                    <input type="hidden" class="form-control" id="account">
+                    <input type="hidden" class="form-control" id="token">
+                    <div class="form-group">
+                        <label for="transfer_to" class="col-sm-4 control-label">To</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_to" class="form-control" placeholder="Valid address required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_value" class="col-sm-4 control-label">Asset</label>
+                        <div class="col-sm-8">
+                            <select id="transfer_value" class="form-control">
+                                <option value="">-- Select Asset --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_user" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-block">SEND</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="add-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Add Token Supply</h4>
+            </div>
+            <div class="modal-body">
+                <form class="add-tokens form-horizontal">
+                    <input type="hidden" id="account" />
+                    <div class="form-group">
+                        <label for="name" class="col-sm-4 control-label">Name</label>
+                        <div class="col-sm-8">
+                            <input id="name" class="form-control" placeholder="Name the contract ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group" display=>
+                        <label for="token_type" class="col-sm-4 control-label">Type</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="token_type">
+                                <option value="">-- Select Type --</option>
+                                <option value="erc20">ERC20 - Fungible</option>
+                                <option value="erc721">ERC721 - Non-Fungible</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-4 control-label">Address</label>
+                        <div class="col-sm-8">
+                            <input id="address" class="form-control" placeholder="Valid contract address ..." type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-block">LINK</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="new-contract-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Add New Contract</h4>
+            </div>
+            <div class="modal-body">
+                <form class="new-contract form-horizontal">
+                    <div class="form-group">
+                        <label for="network" class="col-sm-4 control-label">Network</label>
+                        <div class="col-sm-8">
+                            <select class="form-control neuron-networks" id="network">
+                                <option value="">-- Select Network --</option>
+                            <select/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contractname" class="col-sm-4 control-label">Name</label>
+                        <div class="col-sm-8">
+                            <input id="contractname" class="form-control" placeholder="Must be unique ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contractaddress" class="col-sm-4 control-label">Address</label>
+                        <div class="col-sm-8">
+                            <input id="contractaddress" class="form-control" placeholder="Valid contract address ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contractabi" class="col-sm-4 control-label">ABI</label>
+                        <div class="col-sm-8">
+                            <input id="contractabi" class="form-control" placeholder="Valid JSON required ..." type="text">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">CREATE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="import-template-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Import Contract Templates</h4>
+            </div>
+            <div class="modal-body">
+                <form class="import-template form-horizontal">
+                    <div class="form-group">
+                        <label for="template" class="col-sm-4 control-label">Template</label>
+                        <div class="col-sm-8">
+                            <select class="form-control neuron-templates" id="template">
+                                <option value="">-- Select Template --</option>
+                            <select/>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">IMPORT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="new-trust-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">New Trust</h4>
+            </div>
+            <div class="modal-body">
+                <form class="add-new-trust form-horizontal">
+                    <div class="form-group">
+                        <label for="transfer_user" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">CREATE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id="close-trust-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Close Trust</h4>
+            </div>
+            <div class="modal-body">
+                <alert class="alert alert-warning alert-block">
+                    <p><strong>PLEASE CONFIRM</strong></p>
+                </alert>
+                <hr>
+                <form class="close-trust form-horizontal">
+                    <div class="form-group">
+                        <label for="trust-username" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-8">
+                            <input id="trust-username" class="form-control" placeholder="Authentication required ..." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="trust-password" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input id="trust-password" class="form-control" placeholder="Authentication required ..." type="password">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">DECONSTRUCT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

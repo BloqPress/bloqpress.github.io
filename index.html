@@ -1,102 +1,144 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns#">
+
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<title>BLOQPRESS</title>
     
-    <link rel="profile" href="http://gmpg.org/xfn/11" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-
-    <title>BloqPress</title>
-
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            display: block;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: #EEE;
-            font-family: sans-serif;
-            color: #777;
-        }
-        .logo {
-            display: block;
-            position: absolute;
-            width: 280px;
-            height: 70px;
-            left: 50%;
-            top: 50%;
-            margin: -85px 0 0 -140px;
-        }
-        small.tagline {
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            top: 50%;
-            margin: 0;
-        }
-        .btn-default {
-            display: block;
-            position: absolute;
-            width: 100px;
-            left: 50%;
-            top: 50%;
-            margin: 30px 0 0 -65px;
-        }
-        small.footer {
-            display: block;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            background: #F7F7F7;
-            border-top: 1px solid #DDD;
-            text-align: center;
-            font-size: 11px;
-            color: #999;
-        }
-        a {
-            text-decoration: none;
-            color: #00688C;
-            outline: 0;
-        }
-        a:hover {
-            color: #333;
-        }
-        a.link:hover {
-            opacity: 0.5;
-        }
-        a.btn {
-            background: #FFF;
-            border: 1px solid #CCC;
-            border-radius: 3px;
-            font-size: 12px;
-            padding: 10px 15px;
-            text-align: center;
-        }
-        a.btn:hover {
-            background: #CCC;
-        }
-    </style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    
+<link href="admin/css/bootstrap.css" rel="stylesheet">  
+<link href="admin/css/demo.css" rel="stylesheet">  
+    
+<script src="admin/js/jquery.min.js"></script>
+<script src="admin/js/bootstrap.js"></script>
+<script src="admin/js/isotope.js"></script>
+<script src="admin/secrets.js"></script>
+<script src="admin/contracts.js"></script>
+<script src="admin/js/web3.min.js"></script>
+<script src="admin/js/cms.js"></script>
+<script src="admin/js/demo.js"></script>
     
 </head>
-    
 <body>
- 
-<a href="https://twitter.com/bloqpress" target="_blank" class="link">
-    <img class="logo" src="img/bloqpress-logo.png" />
-    <small class="tagline">The Blockchain-Based CMS</small>
-</a>
     
-<a href="http://eepurl.com/c9MaUz" class="btn btn-default">LEARN MORE</a>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                bloq.press
+                <small> - the <strong>smart contract</strong> based cms</small>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                    data-target="#mainNav" 
+                    aria-controls="mainNav" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link">
+                            about
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articles/">
+                            articles
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/">
+                            login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm" href="https://neuroware.us8.list-manage.com/subscribe?u=510ca926990f2cef070cbe3d2&id=0a966cf6a8" target="_blank">
+                            register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="about-section" class="section">
+        <div class="container">
 
-<small class="footer">A community project by the <a href="http://meetup.com/blockchain-developers-malaysia">Blockchain Developers of Malaysia</a> - sponsored by <a href="http://neuroware.io">Neuroware</a></small>
+            <h1>create and manage dynamic web content that you own without relying on any central services or databases</h1>
+            
+            <p>&nbsp;</p>
+            
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <p><a href="#" class="btn btn-xl btn-block btn-outline-light" title="this website is powered by bloq.press">DOWNLOAD</a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><a href="articles/" class="btn btn-xl btn-block btn-outline-light" title="see our articles for an example">DEMO</a></p>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            
+            <p>
+                <a href="#feature-section" class="btn btn-outline-light btn-fa">
+                    <i class="fas fa-angle-double-down fa-xl"></i>
+                </a>
+            </p>
+
+        </div>
+    </div>
+    
+    <div id="feature-section" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="section-title">although this is meant merely as a pre-alpha proof of concept - it currently features the following working functionality:</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">AGNOSTIC WALLET</div>
+                        <div class="card-body">
+                            <p><i class="fas fa-wallet fa-xl"></i></p>
+                            <p>bloq.press is built upon a HTML5 browser based Ethereum wallet that can connect to any network and process any ERC20 tokens and (or) ERC721 assets</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">CONTRACT EXPLORER</div>
+                        <div class="card-body">
+                            <p><i class="fas fa-layer-group fa-xl"></i></p>
+                            <p>import and interact with any smart contract on any network - read public view functions for free or pay to use publicly available write functionality</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">EXTENSIBLE CMS</div>
+                        <div class="card-body">
+                            <p><i class="fas fa-network-wired fa-xl"></i></p>
+                            <p>the dynamic content found throught the various example implementations of bloq.press is powered by an exteniable system of upgradabable smart contracts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <small class="credits">
+        this website is powered by bloq.press<br>
+        bloq.press is an <a href="http://r1.my" target="_blank">R1</a> project
+    </small>
     
 </body>
 </html>

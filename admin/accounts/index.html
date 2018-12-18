@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<title>ACCOUNTS | BLOQPRESS</title>
+    
+<link href="../css/bootstrap.css" rel="stylesheet">  
+<link href="../css/bloqpress.css" rel="stylesheet">  
+<link href="../css/cortex.css" rel="stylesheet">  
+<link href="../css/tables.css" rel="stylesheet">  
+<link href="../css/admin.css" rel="stylesheet">   
+    
+<script src="../secrets.js"></script>
+<script src="../contracts.js"></script>
+<script src="options.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/qrcode.js"></script>
+<script src="../js/tables.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/web3.min.js"></script>
+<script src="../js/eth-wallet.js"></script>
+<script src="../js/ethereumjs-tx.js"></script>
+<script src="../js/ethereum.js"></script>
+<script src="../js/muuri.js"></script>
+<script src="../js/cortex.js"></script>
+    
+</head>
+    
+<body class="app">
+
+<nav id="header">
+    {{#header}}
+        <a href="{{href}}" class="{{css}}">{{text}}</a>
+    {{/header}}
+</nav>
+
+<nav id="sidebar">
+    {{#sidebar}}
+        <a href="{{href}}" class="{{css}}">{{text}}</a>
+    {{/sidebar}}
+</nav>
+
+<div id="content">
+    <div class="row">
+        <div id="loading-wrapper-content" class="" data-label="FETCHING">
+            <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+                <div></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                        Accounts
+                        <a href="#" class="btn btn-plain btn-sm pull-right btn-scan-accounts">SCAN</a>
+                        <a href="#" class="btn btn-plain btn-sm pull-right btn-account-new">NEW</a> 
+                </div>
+                <div class="card-body"> 
+                    
+                    <table
+                        id="accounts"
+                        class="table table-striped table-bordered data-table" 
+                        data-search="true" 
+                        data-dom="iftlp"
+                        data-order="desc"
+                        data-order-by="1"
+                    >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Network</th>
+                                <th>Balance</th>
+                                <th>TX Sent</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <!--{{#accounts}}-->
+                            <tr>
+                                <td class="plain">
+                                    {{name}}
+                                </td>
+                                <td class="plain">
+                                    0x{{address}}
+                                    {{#tokens}}
+                                        <hr>{{token.name}}: {{token.address}}
+                                    {{/tokens}}
+                                </td>
+                                <td class="plain">
+                                    {{netname}}
+                                    {{#tokens}}
+                                        <hr>{{token.symbol}}
+                                    {{/tokens}}
+                                </td>
+                                <td class="plain">
+                                    {{balance}}
+                                    {{#tokens}}
+                                        <hr>{{token.balance}}
+                                    {{/tokens}}
+                                </td>
+                                <td class="plain">
+                                    {{txs}}
+                                </td>
+                                <td class="plain">
+                                    <a href="#" class="btn btn-xs btn-plain btn-scan-account" data-network="{{network}}" data-address="{{address}}">SCAN</a>
+                                    <a href="#" class="btn btn-xs btn-plain btn-add-tokens" data-id="{{id}}">ADD</a> 
+                                    <a href="#" class="btn btn-xs btn-primary btn-send-account" data-id="{{id}}">SEND</a>
+                                    <a href="#" class="btn btn-xs btn-danger btn-remove-account" data-id="{{id}}">REMOVE</a> 
+                                    {{#tokens}}
+                                        <hr>
+                                        <a href="#" class="btn btn-xs btn-plain btn-scan-token" data-account="{{id}}" data-token="{{tid}}">SCAN</a>
+                                    
+                                        {{#token.erc20}}
+                                        <a href="#" class="btn btn-xs btn-primary btn-send-token" data-account="{{id}}" data-token="{{tid}}">SEND</a>
+                                        {{/token.erc20}}
+                                    
+                                        {{#token.erc721}}
+                                        <a href="#" class="btn btn-xs btn-primary btn-send-asset" data-account="{{id}}" data-token="{{tid}}">SEND</a>
+                                        {{/token.erc721}}
+                                    
+                                        <a href="#" class="btn btn-xs btn-danger btn-remove-token" data-account="{{id}}" data-token="{{tid}}">REMOVE</a> 
+                                    {{/tokens}}
+                                </td>
+                            </tr>
+                            <!--{{/accounts}}-->
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div id="loading-wrapper" class="loading" data-label="LOADING">
+    <div class='uil-ring-css' style='-webkit-transform:scale(0.91)'>
+        <div></div>
+    </div>
+</div>
+    
+</body>
+</html>
