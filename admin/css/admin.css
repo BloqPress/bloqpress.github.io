@@ -145,3 +145,14 @@ MODALS
 .modal-open .modal.fade.in .modal-dialog {
     top: 100px;
 }
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 768px) {
+    .form-horizontal .form-group.row {
+        margin-right: 0;
+    }
+    .form-horizontal .form-group.row > div {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
