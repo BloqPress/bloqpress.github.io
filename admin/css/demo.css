@@ -23,17 +23,21 @@ html body {
 .container.top {
     padding-top: 90px;
 }
+button.btn.btn-secondary,
 a.btn.btn-secondary {
     background: #FFF;
     color: #069;
     border-color: #AAA;
 }
+button.btn.btn-primary,
 a.btn.btn-primary {
     background: #069;
     color: #FFF;
     border-color: #333;
 }
 a.btn.btn-primary:hover,
+button.btn.btn-primary:hover,
+button.btn.btn-secondary:hover,
 a.btn.btn-secondary:hover {
     background: #333;
     color: #FFF;
