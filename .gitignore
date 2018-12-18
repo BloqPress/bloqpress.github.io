@@ -1,13 +1,6 @@
 nbproject/
 git/
 
-secret.json
-admin/secrets.js
-admin/js/cortex.js
-
-cortex.js
-secrets.js
-
 *.swp
 *.log
 

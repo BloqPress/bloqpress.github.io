@@ -2128,8 +2128,13 @@ var cortex = {
             $('body').html(html);
             cortex.ux.loader(true);
             cortex.ux.tables();
+            var ajax_url = '/admin/html/modals.html';
+            if(window.location.href.indexOf("localhost") > -1) 
+            {
+                ajax_url = ethereum_secrets.url + 'html/modals.html';
+            }
             $.ajax({
-                url: '/admin/html/modals.html',
+                url: ajax_url,
                 dataType: 'html',
                 success: function(modals)
                 {

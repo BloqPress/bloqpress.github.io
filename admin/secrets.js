@@ -2,7 +2,7 @@ var is_secretly_logged_in = localStorage.getItem('bpcms_key');
 
 var ethereum_secrets = {
     name: 'BloqPress',
-    url: 'http://localhost/neuroware/websites/bloq.press/admin/',
+    url: 'http://bloq.press/admin/',
     networks: [
         {
             name: 'NeuroNet',
@@ -23,6 +23,11 @@ var ethereum_secrets = {
         }
     }
 };
+
+if(window.location.href.indexOf("localhost") > -1) 
+{
+    ethereum_secrets.url = 'http://localhost/neuroware/websites/bloq.press/admin/';
+}
 
 function eth_secrets(key, default_value)
 {
