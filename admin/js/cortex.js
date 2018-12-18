@@ -1852,11 +1852,11 @@ var cortex = {
                             cortex.accounts.set(network, 'Personal', keys.public, keys.address, balance, txs);
                             if(
                                 typeof ethereum_secrets.plugins != 'undefined'
-                                && typeof ethereum_secrets.plugins.mvp != 'undefined'
-                                && typeof ethereum_secrets.plugins.mvp.enabled != 'undefined'
-                                && ethereum_secrets.plugins.mvp.enabled
+                                && typeof ethereum_secrets.plugins.cms != 'undefined'
+                                && typeof ethereum_secrets.plugins.cms.enabled != 'undefined'
+                                && ethereum_secrets.plugins.cms.enabled
                             ){
-                                cortex.contracts.import('mvp', function()
+                                cortex.contracts.import('cms', function()
                                 {
                                     window.location.href = ethereum_secrets.url;
                                 });
