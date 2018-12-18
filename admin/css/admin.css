@@ -152,6 +152,10 @@ MODALS
         margin-right: 0;
     }
     .form-horizontal .form-group.row > div {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .form-horizontal .form-group.row.unpadded > div {
         padding-right: 0;
         padding-left: 0;
     }
