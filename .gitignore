@@ -2,6 +2,7 @@ nbproject/
 git/
 
 secret.json
+admin/secrets.js
 
 *.swp
 *.log
