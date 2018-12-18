@@ -84,48 +84,56 @@
                             <!--{{#accounts}}-->
                             <tr>
                                 <td class="plain">
-                                    {{name}}
+                                    <small>{{name}}</small>
                                 </td>
                                 <td class="plain">
-                                    0x{{address}}
-                                    {{#tokens}}
-                                        <hr>{{token.name}}: {{token.address}}
-                                    {{/tokens}}
+                                    <small>
+                                        0x{{address}}
+                                        {{#tokens}}
+                                            <hr>{{token.name}}: {{token.address}}
+                                        {{/tokens}}
+                                    </small>
                                 </td>
                                 <td class="plain">
-                                    {{netname}}
-                                    {{#tokens}}
-                                        <hr>{{token.symbol}}
-                                    {{/tokens}}
+                                    <small>
+                                        {{netname}}
+                                        {{#tokens}}
+                                            <hr>{{token.symbol}}
+                                        {{/tokens}}
+                                    </small>
                                 </td>
                                 <td class="plain">
-                                    {{balance}}
-                                    {{#tokens}}
-                                        <hr>{{token.balance}}
-                                    {{/tokens}}
+                                    <small>
+                                        {{balance}}
+                                        {{#tokens}}
+                                            <hr>{{token.balance}}
+                                        {{/tokens}}
+                                    </small>
                                 </td>
                                 <td class="plain">
-                                    {{txs}}
+                                    <small>{{txs}}</small>
                                 </td>
                                 <td class="plain">
-                                    <a href="#" class="btn btn-xs btn-plain btn-scan-account" data-network="{{network}}" data-address="{{address}}">SCAN</a>
-                                    <a href="#" class="btn btn-xs btn-plain btn-add-tokens" data-id="{{id}}">ADD</a> 
-                                    <a href="#" class="btn btn-xs btn-primary btn-send-account" data-id="{{id}}">SEND</a>
-                                    <a href="#" class="btn btn-xs btn-danger btn-remove-account" data-id="{{id}}">REMOVE</a> 
-                                    {{#tokens}}
-                                        <hr>
-                                        <a href="#" class="btn btn-xs btn-plain btn-scan-token" data-account="{{id}}" data-token="{{tid}}">SCAN</a>
-                                    
-                                        {{#token.erc20}}
-                                        <a href="#" class="btn btn-xs btn-primary btn-send-token" data-account="{{id}}" data-token="{{tid}}">SEND</a>
-                                        {{/token.erc20}}
-                                    
-                                        {{#token.erc721}}
-                                        <a href="#" class="btn btn-xs btn-primary btn-send-asset" data-account="{{id}}" data-token="{{tid}}">SEND</a>
-                                        {{/token.erc721}}
-                                    
-                                        <a href="#" class="btn btn-xs btn-danger btn-remove-token" data-account="{{id}}" data-token="{{tid}}">REMOVE</a> 
-                                    {{/tokens}}
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-xs btn-plain btn-scan-account" data-network="{{network}}" data-address="{{address}}" style="display: none;">SCAN</a>
+                                        <a href="#" class="btn btn-xs btn-plain btn-add-tokens" data-id="{{id}}">ADD</a> 
+                                        <a href="#" class="btn btn-xs btn-primary btn-send-account" data-id="{{id}}">SEND</a>
+                                        <a href="#" class="btn btn-xs btn-danger btn-remove-account" data-id="{{id}}">X</a> 
+                                        {{#tokens}}
+                                            <hr>
+                                            <a href="#" class="btn btn-xs btn-plain btn-scan-token" data-account="{{id}}" data-token="{{tid}}" style="display: none;">SCAN</a>
+
+                                            {{#token.erc20}}
+                                            <a href="#" class="btn btn-xs btn-primary btn-send-token" data-account="{{id}}" data-token="{{tid}}">SEND</a>
+                                            {{/token.erc20}}
+
+                                            {{#token.erc721}}
+                                            <a href="#" class="btn btn-xs btn-primary btn-send-asset" data-account="{{id}}" data-token="{{tid}}">SEND</a>
+                                            {{/token.erc721}}
+
+                                            <a href="#" class="btn btn-xs btn-danger btn-remove-token" data-account="{{id}}" data-token="{{tid}}">X</a> 
+                                        {{/tokens}}
+                                    </div>
                                 </td>
                             </tr>
                             <!--{{/accounts}}-->

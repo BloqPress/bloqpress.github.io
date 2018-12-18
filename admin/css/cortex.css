@@ -34,12 +34,12 @@ ul.activity li.hidden-tx,
 .hidden-tx {
     display: none;
 }
-.panel .pagination > .active > a, 
-.panel .pagination > .active > span, 
-.panel .pagination > .active > a:hover, 
-.panel .pagination > .active > span:hover, 
-.panel .pagination > .active > a:focus, 
-.panel .pagination > .active > span:focus {
+.card .pagination > .active > a, 
+.card .pagination > .active > span, 
+.card .pagination > .active > a:hover, 
+.card .pagination > .active > span:hover, 
+.card .pagination > .active > a:focus, 
+.card .pagination > .active > span:focus {
     background: #06427E;
     border-color: #333;
     color: #FFF;
@@ -49,18 +49,18 @@ a.btn.btn-default:hover {
     background: #0C3863;
 }
 hr,
-.panel hr {
+.card hr {
     border-color: #CCC;
 }
 .uil-ring-css > div {
   box-shadow: 0 6px 0 0 #06427E;
 }
-.panel .pagination > .disabled > span, 
-.panel .pagination > .disabled > span:hover, 
-.panel .pagination > .disabled > span:focus, 
-.panel .pagination > .disabled > a, 
-.panel .pagination > .disabled > a:hover, 
-.panel .pagination > .disabled > a:focus,
+.card .pagination > .disabled > span, 
+.card .pagination > .disabled > span:hover, 
+.card .pagination > .disabled > span:focus, 
+.card .pagination > .disabled > a, 
+.card .pagination > .disabled > a:hover, 
+.card .pagination > .disabled > a:focus,
 .btn.btn-plain {
     background: #EEE;
     color: #666;
@@ -85,22 +85,12 @@ hr,
 PANELS
 
 */
-.panel.panel-default {
-    background: #FFF;
-    border-color: #AAA;
-    color: #666;
+#content .card {
+    margin-bottom: 30px;
 }
-.panel.panel-default .panel-body {
-    color: #666;
-}
-.panel.panel-default .panel-heading {
-    background: #CCC;
-    border-color: #AAA;
-    color: #222;
-}
-.panel .nav-tabs > li.active > a, 
-.panel .nav-tabs > li.active > a:hover, 
-.panel .nav-tabs > li.active > a:focus,
+.card .nav-tabs > li.active > a, 
+.card .nav-tabs > li.active > a:hover, 
+.card .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a, 
 .nav-tabs > li.active > a:hover, 
 .nav-tabs > li.active > a:focus {
@@ -109,8 +99,8 @@ PANELS
     border-bottom-color: #FFF;
     color: #666;
 }
-.panel .nav > li > a:hover, 
-.panel .nav > li > a:focus,
+.card .nav > li > a:hover, 
+.card .nav > li > a:focus,
 .nav > li > a:hover, 
 .nav > li > a:focus {
     background-color: #EEE;
@@ -202,17 +192,34 @@ MODALS
 TABLES
 
 */
-html body .panel .table-bordered,
-html body .panel .table-bordered > thead > tr > th, 
-html body .panel .table-bordered > tbody > tr > th, 
-html body .panel .table-bordered > tfoot > tr > th, 
-html body .panel .table-bordered > thead > tr > td, 
-html body .panel .table-bordered > tbody > tr > td, 
-html body .panel .table-bordered > tfoot > tr > td,
-.panel .table.dataTable thead th, 
-.panel table.dataTable thead td, 
-.panel .table.dataTable.no-footer,
-html body .panel table.table.dataTable {
+.dataTables_wrapper {
+    display: block;
+}
+.dataTables_length select {
+    margin-right: 15px;
+}
+.paginate_button a {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 3px;
+}
+.dataTables_wrapper .dataTables_info {
+    line-height: 15px;
+}
+.card .dataTables_length, .card .dataTables_paginate {
+    padding: 3px 0 0;
+}
+html body .card .table-bordered,
+html body .card .table-bordered > thead > tr > th, 
+html body .card .table-bordered > tbody > tr > th, 
+html body .card .table-bordered > tfoot > tr > th, 
+html body .card .table-bordered > thead > tr > td, 
+html body .card .table-bordered > tbody > tr > td, 
+html body .card .table-bordered > tfoot > tr > td,
+.card .table.dataTable thead th, 
+.card table.dataTable thead td, 
+.card .table.dataTable.no-footer,
+html body .card table.table.dataTable {
     border-color: #CCC;
     background: #F5F5F5;
 }
@@ -222,10 +229,10 @@ html body .panel table.table.dataTable {
     border-color: #CCC;
     color: #666;
 }
-.panel .dataTables_info, .panel .dataTables_filter {
+.card .dataTables_info, .card .dataTables_filter {
     color: #666;
 }
-.panel .table.dataTable thead th, .panel table.dataTable thead td {
+.card .table.dataTable thead th, .card table.dataTable thead td {
     background: #DDD;
     border-color: #CCC;
 }
@@ -312,70 +319,81 @@ input.file-hash:before {
 .row.rowless {
     margin: 0;
 }
-.row.rowless .panel .panel-heading {
-    text-align: center;
-}
 
 /*
 
 CONTRACTS
 
 */
-.padless.tight {
-    margin: -30px -30px -50px -30px;
+form.read-functions .btn.pull-right.btn-sm {
+    margin: -3px 0 0 3px;
 }
-.padless.list .well .alert-block {
+form.read-functions {
+    display: block;
+    position: relative;
+    padding: 30px 0 30px 0;
+}
+.hidden-panel .well:last-child form.read-functions {
+    padding-bottom: 0;
+}
+.card .well .alert-block {
     text-align: left;
-    margin: -20px;
+    margin: -30px 0 -15px;
+    display: block;
+    position: relative;
+}
+.col-md-12.alert-holder {
+    margin-bottom: -30px;
+}
+.col-md-12.card-holder {
+    display: block;
+    position: relative;
+    padding: 30px 15px 0;
 }
 
-.padless.list select.select-function,
-.padless.list form select.form-control {
+.card select.select-function,
+.card form select.form-control {
     height: 50px;
 }
 
-.padless.list .well form label {
+.card .well form label {
     background: #DDD;
     border-color: #BBB;
 }
 
-.padless.list .well form textarea,
-.padless.list .well form input {
-    background: #FFF;
+.card .well form textarea,
+.card .well form input {
+    background: #FFFFEE;
     border-color: #BBB;
 }
 
-.padless.list .well form textarea {
+.card .well form textarea {
     height: 252px;
     line-height: 35px;
     padding-top: 0;
     padding-bottom: 0;
 }
-.padless.list .well form textarea.rows-1 {
+.card .well form textarea.rows-1 {
     height: 36px;
 }
-.padless.list .well form textarea.rows-2 {
+.card .well form textarea.rows-2 {
     height: 72px;
 }
-.padless.list .well form textarea.rows-3 {
+.card .well form textarea.rows-3 {
     height: 108px;
 }
-.padless.list .well form textarea.rows-4 {
+.card .well form textarea.rows-4 {
     height: 148px;
 }
-.padless.list .well form textarea.rows-5 {
+.card .well form textarea.rows-5 {
     height: 184px;
 }
-.padless.list .well form textarea.rows-6 {
+.card .well form textarea.rows-6 {
     height: 216px;
 }
     
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-    .panel-heading {
-        height: auto;
-        text-align: center;
-    }
     h4.heading .btn.pull-right,
     h4.heading .btn {
         display: block;

@@ -55,7 +55,7 @@
         
         {{#contract_count}}
 
-        <div class="col-md-12">
+        <div class="col-md-12 alert-holder">
             <alert class="alert alert-info alert-block">
                 <p>
                     <strong>{{contract_count}} {{contract_word}} SAVED WITHIN LOCAL STORAGE</strong> 
@@ -90,12 +90,12 @@
 
         {{#contracts}}
         
-            <div class="col-md-12">
+            <div class="col-md-12 card-holder">
                 <div class="card">
                     <div class="card-header">
                         {{name}} <small>{{address}}</small>
-                        <a href="#" class="btn btn-danger pull-right btn-remove-contract" style="margin-top:-7px; margin-right: 7px;" data-id="{{id}}">Remove</a> 
-                        <a href="#" class="btn btn-plain pull-right btn-panel-toggler" style="margin-top:-7px; margin-right: 7px;" data-text="Open">Close</a> 
+                        <a href="#" class="btn btn-danger pull-right btn-remove-contract btn-sm" style="margin-top:-5px; margin-right: 7px;" data-id="{{id}}">Remove</a> 
+                        <a href="#" class="btn btn-plain pull-right btn-panel-toggler btn-sm" style="margin-top:-5px; margin-right: 7px;" data-text="Open">Close</a> 
                     </div>
                     <div class="card-body"> 
                         <div class="row connect-contract" data-name="{{name}}">
@@ -112,8 +112,8 @@
                                         <form class="read-functions form-horizontal" id="{{id}}-form" data-name="{{id}}" data-func="{{name}}">
                                             <alert class="alert alert-block alert-info">
                                                 {{text}}
-                                                <button type="submit" class="btn pull-right btn-plain btn-xs btn-function-toggler" data-text="OPEN" style="margin-left: 6px;">CLOSE</button>
-                                                <button type="submit" class="btn pull-right btn-plain btn-xs">SCAN</button>
+                                                <button type="submit" class="btn pull-right btn-plain btn-sm btn-function-toggler" data-text="OPEN" style="margin-left: 6px;">CLOSE</button>
+                                                <button type="submit" class="btn pull-right btn-plain btn-sm">SCAN</button>
                                             </alert>
                                             <div class="hidden-function">
                                                 <hr style="border-color: transparent">

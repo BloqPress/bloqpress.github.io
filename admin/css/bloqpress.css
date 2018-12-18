@@ -40,12 +40,12 @@ a:hover {
     padding: 0 30px;
     text-transform: uppercase;
 }
-.panel .pagination > .active > a, 
-.panel .pagination > .active > span, 
-.panel .pagination > .active > a:hover, 
-.panel .pagination > .active > span:hover, 
-.panel .pagination > .active > a:focus, 
-.panel .pagination > .active > span:focus {
+.card .pagination > .active > a, 
+.card .pagination > .active > span, 
+.card .pagination > .active > a:hover, 
+.card .pagination > .active > span:hover, 
+.card .pagination > .active > a:focus, 
+.card .pagination > .active > span:focus {
     background: #00A3D9;
     border-color: #000;
     color: #FFF;
@@ -54,12 +54,12 @@ a:hover {
     background: #0C3863;
     border-color: #333;
 }
-.panel .pagination > .disabled > span, 
-.panel .pagination > .disabled > span:hover, 
-.panel .pagination > .disabled > span:focus, 
-.panel .pagination > .disabled > a, 
-.panel .pagination > .disabled > a:hover, 
-.panel .pagination > .disabled > a:focus,
+.card .pagination > .disabled > span, 
+.card .pagination > .disabled > span:hover, 
+.card .pagination > .disabled > span:focus, 
+.card .pagination > .disabled > a, 
+.card .pagination > .disabled > a:hover, 
+.card .pagination > .disabled > a:focus,
 .btn-plain {
     background: #222;
     color: #999;
@@ -106,7 +106,7 @@ img.img.img-block {
     margin-left: 0;
     margin-right: -30px;
 }
-.panel hr {
+.card hr {
     border-color: #000;
 }
 
@@ -115,17 +115,13 @@ img.img.img-block {
 PANELS
 
 */
-.panel {
+.card {
     position: relative;
 }
-.panel.floating {
+.card.floating {
     margin-top: 100px;
 }
-.panel-heading {
-    height: 60px;
-    border-bottom: 1px solid #888;
-}
-.panel ul.nav-tabs {
+.card ul.nav-tabs {
     position: absolute;
     top: 0;
     left: 150px;
@@ -133,11 +129,11 @@ PANELS
     height: 60px;
     border-bottom: 1px solid #888;
 }
-.panel ul.nav-tabs > li {
+.card ul.nav-tabs > li {
     float: right;
     outline: 0;
 }
-.panel ul.nav-tabs > li a {
+.card ul.nav-tabs > li a {
     line-height: 39px;
     padding: 10px 30px;
     outline: 0;
@@ -145,36 +141,18 @@ PANELS
     margin: -1px;
     text-transform: uppercase;
 }
-.panel ul.nav-tabs > li:first-child a {
+.card ul.nav-tabs > li:first-child a {
     border-radius: 0 4px 0 0;
 }
-.panel .nav-tabs > li:hover > a,
-.panel .nav-tabs > li.active > a {
+.card .nav-tabs > li:hover > a,
+.card .nav-tabs > li.active > a {
     border-left: 1px solid #888; 
     border-right: 1px solid #888; 
     border-top: 1px solid #888;
 }
-.panel-default {
-    border-color: #777;
-}
-.panel-default .panel-heading {
-    background: #000;
-    border-color: #888;
-    color: #CCC;
-}
-.panel .panel-body {
-    padding: 50px;
-    color: #CCC;
-}
-.panel .panel-body.padless {
-    padding: 30px;
-}
-.panel .alert-block.mobile-only {
+.card .alert-block.mobile-only {
     display: none;
     margin-bottom: 25px;
-}
-.panel {
-    background: #555;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     background: #555;
@@ -502,56 +480,56 @@ canvas.charts {
 TABLES
 
 */
-.panel .dataTables_info,
-.panel .dataTables_filter {
+.card .dataTables_info,
+.card .dataTables_filter {
     margin: 0;
     padding: 0 0 10px;
     line-height: 30px;
 }
-.panel .dataTables_length,
-.panel .dataTables_paginate {
+.card .dataTables_length,
+.card .dataTables_paginate {
     margin: 0;
     padding: 14px 0 0;
     line-height: 30px;
 }
-.panel ul.pagination {
+.card ul.pagination {
     margin: 0;
 }
-.panel .dataTables_wrapper .dataTables_paginate .paginate_button {
+.card .dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 0;
 }
-.panel .table.dataTable thead th, 
-.panel table.dataTable thead td,
-.panel .table.dataTable.no-footer {
+.card .table.dataTable thead th, 
+.card table.dataTable thead td,
+.card .table.dataTable.no-footer {
     border-color: #DDD;
 }
-.panel .table.dataTable thead th, 
-.panel table.dataTable thead td {
+.card .table.dataTable thead th, 
+.card table.dataTable thead td {
     background-color: #EEE;
     padding: 15px;
     border-color: #DDD;
 }
-.panel .table.dataTable tbody th, 
-.panel table.dataTable tbody td {
+.card .table.dataTable tbody th, 
+.card table.dataTable tbody td {
     padding: 15px;
     line-height: 33px;
 }
 .dataTables_filter input.form-control {
     background: #F9F9F9;
 }
-.panel table.dataTable tbody td a.btn-xs {
+.card table.dataTable tbody td a.btn-xs {
     margin: -3px 3px 0 3px;
 }
-.panel table.dataTable thead tr th,
-.panel table.dataTable tbody tr td {
+.card table.dataTable thead tr th,
+.card table.dataTable tbody tr td {
     text-align: center;
 }
-.panel table.dataTable tbody tr td:first-child,
-.panel table.dataTable thead tr th:first-child {
+.card table.dataTable tbody tr td:first-child,
+.card table.dataTable thead tr th:first-child {
     text-align: left;
 }
-.panel table.dataTable tbody tr td:last-child,
-.panel table.dataTable thead tr th:last-child {
+.card table.dataTable tbody tr td:last-child,
+.card table.dataTable thead tr th:last-child {
     text-align: right;
 }
 table.dataTable thead tr th.sorting:last-child, 
@@ -901,14 +879,11 @@ MODALS
 PANELS
 
 */
-.panel.panel-default {
-    border-color: #000;
-}
-.panel .nav-tabs > li.active > a {
+.card .nav-tabs > li.active > a {
     border-color: #000;
     border-bottom-color: #555;
 }
-.panel .nav-tabs > li:hover > a {
+.card .nav-tabs > li:hover > a {
     border-color: #000;
     border-bottom-color: #555;
 }
@@ -918,17 +893,17 @@ PANELS
 TABLES
 
 */
-html body .panel .table-bordered,
-html body .panel .table-bordered > thead > tr > th, 
-html body .panel .table-bordered > tbody > tr > th, 
-html body .panel .table-bordered > tfoot > tr > th, 
-html body .panel .table-bordered > thead > tr > td, 
-html body .panel .table-bordered > tbody > tr > td, 
-html body .panel .table-bordered > tfoot > tr > td,
-.panel .table.dataTable thead th, 
-.panel table.dataTable thead td, 
-.panel .table.dataTable.no-footer,
-html body .panel table.table.dataTable {
+html body .card .table-bordered,
+html body .card .table-bordered > thead > tr > th, 
+html body .card .table-bordered > tbody > tr > th, 
+html body .card .table-bordered > tfoot > tr > th, 
+html body .card .table-bordered > thead > tr > td, 
+html body .card .table-bordered > tbody > tr > td, 
+html body .card .table-bordered > tfoot > tr > td,
+.card .table.dataTable thead th, 
+.card table.dataTable thead td, 
+.card .table.dataTable.no-footer,
+html body .card table.table.dataTable {
     border-color: #000;
     background: #666;
 }
@@ -938,10 +913,10 @@ html body .panel table.table.dataTable {
     border-color: #000;
     color: #AAA;
 }
-.panel .dataTables_info, .panel .dataTables_filter {
+.card .dataTables_info, .card .dataTables_filter {
     color: #AAA;
 }
-.panel .table.dataTable thead th, .panel table.dataTable thead td {
+.card .table.dataTable thead th, .card table.dataTable thead td {
     background: #333;
     border-color: #000;
 }
@@ -957,14 +932,14 @@ SIDEBAR
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-    .panel ul.nav-tabs > li a {
+    .card ul.nav-tabs > li a {
         padding: 10px 15px;
     }
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-    .panel ul.nav-tabs > li a {
+    .card ul.nav-tabs > li a {
         padding: 10px 20px;
     }
     form.form-horizontal.key-meta {
@@ -1002,13 +977,13 @@ SIDEBAR
     .form-group.buttons {
         padding-right: 0;
     }
-    .panel ul.nav-tabs > li a {
+    .card ul.nav-tabs > li a {
         padding: 10px 23px;
     }
     #content {
         padding: 110px 30px 30px 30px;
     }
-    .panel ul.nav-tabs > li a {
+    .card ul.nav-tabs > li a {
         padding: 10px 10px;
     }
     #header a {
@@ -1024,16 +999,16 @@ SIDEBAR
         text-align: center;
         text-indent: 0;
     }
-    .panel ul.nav-tabs {
+    .card ul.nav-tabs {
         left: 0;
         text-align: center;
     }
-    .panel ul.nav-tabs li {
+    .card ul.nav-tabs li {
         display: inline-block;
         position: relative;
         float: none;
     }
-    .panel .panel-body {
+    .card .card-body {
         padding: 10px;
     }
     #content {
@@ -1110,9 +1085,9 @@ SIDEBAR
         background-position: -550px -130px;
     }
 
-    .panel .dataTables_length,
-    .panel .dataTables_info, 
-    .panel .dataTables_filter {
+    .card .dataTables_length,
+    .card .dataTables_info, 
+    .card .dataTables_filter {
         width: 100%;
         text-align: center;
     }
@@ -1133,7 +1108,7 @@ SIDEBAR
     .row.actions .btn {
         margin-top: 15px;
     }
-    .panel .alert-block.mobile-only {
+    .card .alert-block.mobile-only {
         display: block;
     }
     .row.forms form {
@@ -1146,13 +1121,13 @@ SIDEBAR
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
-    .panel ul.nav-tabs {
+    .card ul.nav-tabs {
         left: 0px;
     }
-    .panel ul.nav-tabs > li a {
+    .card ul.nav-tabs > li a {
         padding: 10px 19px;
     }
-    .panel.floating {
+    .card.floating {
         margin-top: 15px;
     }
 }
@@ -1162,27 +1137,27 @@ SIDEBAR
     table.table thead {
         display: none;
     }
-    .panel table.dataTable.table-bordered {
+    .card table.dataTable.table-bordered {
         border: none;
     }
-    .panel table.dataTable tbody tr {
+    .card table.dataTable tbody tr {
         background: transparent;
     }
-    .panel table.dataTable tbody tr td:first-child,
-    .panel table.dataTable tbody tr td:last-child,
+    .card table.dataTable tbody tr td:first-child,
+    .card table.dataTable tbody tr td:last-child,
     table.table tbody tr td {
         display: block;
         position: relative;
         text-align: center;
         background: #F7F7F7;
     }
-    .panel table.dataTable tbody tr td:first-child {
+    .card table.dataTable tbody tr td:first-child {
         background: #EEE;
     }
-    .panel table.dataTable tbody tr td:last-child {
+    .card table.dataTable tbody tr td:last-child {
         margin-bottom: 20px;
     }
-    .panel table.dataTable tbody tr td:before { 
+    .card table.dataTable tbody tr td:before { 
         content: attr(data-label);
     }
 }

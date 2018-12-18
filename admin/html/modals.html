@@ -1,11 +1,11 @@
-<div class="modal fade" id="default-modal">
-    <div class="modal-dialog">
+<div class="modal fade" id="default-modal" role="dialog">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Modal Styling</h4>
             </div>
             <div class="modal-body">
                 CONTENT
@@ -18,14 +18,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Transfer Ether</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Transfer Ether</h4>
             </div>
             <div class="modal-body">
                 <form class="ethereum-transfer form-horizontal neuron-transfer" data-type="ether">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_from" class="col-sm-4 control-label">From</label>
                         <div class="col-sm-8">
                             <select class="form-control neuron-accounts" id="transfer_from">
@@ -33,25 +33,25 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_to" class="col-sm-4 control-label">To</label>
                         <div class="col-sm-8">
                             <input id="transfer_to" class="form-control" placeholder="Valid address required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_value" class="col-sm-4 control-label">Amount</label>
                         <div class="col-sm-8">
                             <input id="transfer_value" class="form-control" placeholder="Ether amount to send ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_user" class="col-sm-4 control-label">Username</label>
                         <div class="col-sm-8">
                             <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-8">
                             <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
@@ -74,14 +74,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Add New Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Add New Account</h4>
             </div>
             <div class="modal-body">
                 <form class="new-account form-horizontal">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="network" class="col-sm-4 control-label">Network</label>
                         <div class="col-sm-8">
                             <select class="form-control neuron-networks" id="network">
@@ -89,19 +89,19 @@
                             <select/>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="accountname" class="col-sm-4 control-label">Name</label>
                         <div class="col-sm-8">
                             <input id="accountname" class="form-control" placeholder="Must be unique ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="username" class="col-sm-4 control-label">Username</label>
                         <div class="col-sm-8">
                             <input id="username" class="form-control" placeholder="Authentication required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="password" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-8">
                             <input id="password" class="form-control" placeholder="Authentication required ..." type="password">
@@ -124,34 +124,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Transfer Tokens</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Transfer Tokens</h4>
             </div>
             <div class="modal-body">
                 <form class="token-transfer form-horizontal neuron-transfer" data-type="erc20">
                     <input type="hidden" class="form-control" id="account">
                     <input type="hidden" class="form-control" id="token">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_to" class="col-sm-4 control-label">To</label>
                         <div class="col-sm-8">
                             <input id="transfer_to" class="form-control" placeholder="Valid address required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_value" class="col-sm-4 control-label">Amount</label>
                         <div class="col-sm-8">
                             <input id="transfer_value" class="form-control" placeholder="Token amount to send ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_user" class="col-sm-4 control-label">Username</label>
                         <div class="col-sm-8">
                             <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-8">
                             <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
@@ -174,22 +174,22 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Transfer Asset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Transfer Asset</h4>
             </div>
             <div class="modal-body">
                 <form class="token-transfer form-horizontal neuron-transfer" data-type="erc721">
                     <input type="hidden" class="form-control" id="account">
                     <input type="hidden" class="form-control" id="token">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_to" class="col-sm-4 control-label">To</label>
                         <div class="col-sm-8">
                             <input id="transfer_to" class="form-control" placeholder="Valid address required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_value" class="col-sm-4 control-label">Asset</label>
                         <div class="col-sm-8">
                             <select id="transfer_value" class="form-control">
@@ -197,13 +197,13 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_user" class="col-sm-4 control-label">Username</label>
                         <div class="col-sm-8">
                             <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-8">
                             <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
@@ -226,21 +226,21 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Add Token Supply</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Add Token Supply</h4>
             </div>
             <div class="modal-body">
                 <form class="add-tokens form-horizontal">
                     <input type="hidden" id="account" />
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="name" class="col-sm-4 control-label">Name</label>
                         <div class="col-sm-8">
                             <input id="name" class="form-control" placeholder="Name the contract ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group" display=>
+                    <div class="form-group row" display=>
                         <label for="token_type" class="col-sm-4 control-label">Type</label>
                         <div class="col-sm-8">
                             <select class="form-control" id="token_type">
@@ -250,7 +250,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="address" class="col-sm-4 control-label">Address</label>
                         <div class="col-sm-8">
                             <input id="address" class="form-control" placeholder="Valid contract address ..." type="text">
@@ -273,14 +273,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Add New Contract</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Add New Contract</h4>
             </div>
             <div class="modal-body">
                 <form class="new-contract form-horizontal">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="network" class="col-sm-4 control-label">Network</label>
                         <div class="col-sm-8">
                             <select class="form-control neuron-networks" id="network">
@@ -288,19 +288,19 @@
                             <select/>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="contractname" class="col-sm-4 control-label">Name</label>
                         <div class="col-sm-8">
                             <input id="contractname" class="form-control" placeholder="Must be unique ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="contractaddress" class="col-sm-4 control-label">Address</label>
                         <div class="col-sm-8">
                             <input id="contractaddress" class="form-control" placeholder="Valid contract address ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="contractabi" class="col-sm-4 control-label">ABI</label>
                         <div class="col-sm-8">
                             <input id="contractabi" class="form-control" placeholder="Valid JSON required ..." type="text">
@@ -323,14 +323,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Import Contract Templates</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Import Contract Templates</h4>
             </div>
             <div class="modal-body">
                 <form class="import-template form-horizontal">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="template" class="col-sm-4 control-label">Template</label>
                         <div class="col-sm-8">
                             <select class="form-control neuron-templates" id="template">
@@ -355,20 +355,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">New Trust</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">New Trust</h4>
             </div>
             <div class="modal-body">
                 <form class="add-new-trust form-horizontal">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_user" class="col-sm-4 control-label">Username</label>
                         <div class="col-sm-8">
                             <input id="transfer_user" class="form-control" placeholder="Authentication required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="transfer_pass" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-8">
                             <input id="transfer_pass" class="form-control" placeholder="Authentication required ..." type="password">
@@ -391,10 +391,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                <h5 class="modal-title">Close Trust</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Close Trust</h4>
             </div>
             <div class="modal-body">
                 <alert class="alert alert-warning alert-block">
@@ -402,13 +402,13 @@
                 </alert>
                 <hr>
                 <form class="close-trust form-horizontal">
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="trust-username" class="col-sm-4 control-label">Username</label>
                         <div class="col-sm-8">
                             <input id="trust-username" class="form-control" placeholder="Authentication required ..." type="text">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="trust-password" class="col-sm-4 control-label">Password</label>
                         <div class="col-sm-8">
                             <input id="trust-password" class="form-control" placeholder="Authentication required ..." type="password">

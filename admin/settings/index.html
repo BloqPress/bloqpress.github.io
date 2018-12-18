@@ -52,17 +52,15 @@
                 <div></div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8">
             
             {{#accounts}}
             
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="heading display">
-                        {{name}} <small>Public Information</small>
-                    </h4>
+            <div class="card">
+                <div class="card-header">
+                    {{name}} <small>Public Information</small>
                 </div>
-                <div class="panel-body"> 
+                <div class="card-body"> 
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="activity keys">
@@ -111,26 +109,24 @@
             {{/accounts}}
         </div>
         
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="heading display">
-                        Access Private Keys
-                    </h4>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    Access Private Keys
                 </div>
-                <div class="panel-body padless list"> 
+                <div class="card-body"> 
                     <form class="form-horizontal recover-keys">
                         <select class="form-control neuron-accounts" id="account">
                             <option value="">-- Select Account --</option>
                         </select>
                         <hr>
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label for="username" class="col-sm-5 control-label">Password</label>
                             <div class="col-sm-7">
                                 <input id="username" class="form-control data-input" placeholder="Valid username needed ..." type="text">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label for="password" class="col-sm-5 control-label">Password</label>
                             <div class="col-sm-7">
                                 <input id="password" class="form-control data-input" placeholder="Authentication required ..." type="password">
@@ -142,13 +138,11 @@
                 </div>
             </div>
             
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="heading display">
-                        Clear Device
-                    </h4>
+            <div class="card">
+                <div class="card-header">
+                    Clear Device
                 </div>
-                <div class="panel-body padless list"> 
+                <div class="card-body"> 
                     <form class="form-horizontal recover-keys">
                         <alert class="alert alert-warning alert-block">
                             <small>REMOVE WALLET DATA FROM LOCALSTORAGE</small>

@@ -60,6 +60,10 @@ BUTTONS
 .btn.btn-secondary:hover {
     background: #333;
 }
+html body .btn.btn-xs {
+    padding: 4px 8px;
+    font-size: 11px;
+}
 
 /*
 
@@ -139,5 +143,5 @@ MODALS
     top: -100%;
 }
 .modal-open .modal.fade.in .modal-dialog {
-    top: 60px;
+    top: 100px;
 }
