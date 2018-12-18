@@ -147,6 +147,13 @@ MODALS
 }
 
 /* Extra Small Devices, Phones */ 
+
+@media only screen and (max-width : 960px) {
+    .form-horizontal .form-group.row.unpadded {
+        margin-right: -45px;
+    }
+}
+
 @media only screen and (max-width : 768px) {
     .form-horizontal .form-group.row {
         margin-right: 0;
@@ -158,5 +165,20 @@ MODALS
     .form-horizontal .form-group.row.unpadded > div {
         padding-right: 0;
         padding-left: 0;
+    }
+    .form-horizontal .form-group.row.unpadded {
+        margin-right: -15px;
+    }
+}
+
+@media only screen and (max-width : 576px) {
+    .form-horizontal .form-group.row.unpadded {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+    .form-horizontal .form-group.row.unpadded {
+        margin-right: 0;
     }
 }
