@@ -444,4 +444,14 @@ small.credits {
     #about-section.section {
         padding-top: 100px;
     }
+    .row .card {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    #screenshots {
+        padding-top: 60px;
+    }
+    .section {
+        padding-bottom: 60px;
+    }
 }
