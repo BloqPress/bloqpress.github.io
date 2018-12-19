@@ -456,4 +456,11 @@ small.credits {
     .section {
         padding-bottom: 60px;
     }
+    alert.alert-block {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    alert.alert-block.top {
+        margin-top: -30px;
+    }
 }
