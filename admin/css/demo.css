@@ -91,6 +91,8 @@ ISOTOPE
     border-bottom: 1px dotted #CCC;
     padding-bottom: 15px;
     margin-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /*

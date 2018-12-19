@@ -82,7 +82,7 @@ var bp_demo = {
                     })
                 }
             };
-            filters+= '<button data-filter="*" class="btn btn-primary">show all</button>';
+            filters+= '<button data-filter="*" class="btn btn-primary">all</button>';
             $.each(all_tags, function(k, v)
             {
                 filters+= '<button data-filter=".'+k+'" class="btn btn-secondary">'+k+' <small>('+v+')</small></button>';
