@@ -7,7 +7,7 @@
 ```
 
 ### welcome to bloq.press 
-#### - smart contract based cms
+#### smart contract based cms
 
 There is no documentation currently available.
 
