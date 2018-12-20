@@ -181,6 +181,29 @@ SECTIONS
     position: relative;
     margin: -90px 0;
 }
+#screenshots:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../img/circuit-board.png);
+    opacity: 0.1;
+}
+#about-section:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../img/animated-bg.gif);
+    background-size: cover;
+    opacity: 0.05;
+}
 
 /*
 
