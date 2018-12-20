@@ -644,6 +644,7 @@ var cortex = {
             {
                 e.preventDefault();
                 localStorage.removeItem('bpcms_key');
+                localStorage.removeItem('bp_login_state');
                 window.location.href = ethereum_secrets.url;
             });
             $('body').on('click', '.btn-clear-device', function(e)
@@ -1740,6 +1741,7 @@ var cortex = {
                     if(keys.address == address)
                     {
                         localStorage.setItem('bpcms_key', keys.public);
+                        localStorage.setItem('bp_login_state', true);
                         window.location.href = ethereum_secrets.url + 'dashboard/';
                     }
                     else

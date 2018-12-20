@@ -18,6 +18,7 @@ html body {
     position: relative;
     text-align: center;
     width: 100%;
+    word-break: normal;
 }
 .row.formed {
     text-align: center;

@@ -171,6 +171,44 @@ var bp_demo = {
         }
     },
     ux: {
+        admin: function()
+        {
+            if($('form.bp-add-article').length > 0)
+            {
+                var network = ethereum_smart_contract_abis.cms[1].network;
+                var address = ethereum_smart_contract_abis.cms[1].address;
+                bp_cms.articles.stored(network, address, function(articles)
+                {
+                    var article_count = articles.length;
+                    var tag_count = 0;
+                    var tag_html = '';
+                    var tags = {};
+                    for(i = 0; i < articles.length; i++)
+                    {
+                        var tag_array = articles[i][3].split(', ');
+                        for(t = 0; t < tag_array.length; t++)
+                        {
+                            if(typeof tags[tag_array[t]] == 'undefined')
+                            {
+                                tags[tag_array[t]] = tag_array[t];
+                                tag_count++;
+                                if(!tag_html)
+                                {
+                                    tag_html+= tag_array[t];
+                                }
+                                else
+                                {
+                                    tag_html+= ', ' + tag_array[t];
+                                }
+                            }               
+                        }
+                    }
+                    $('.bp-article-count').text(article_count);
+                    $('.bp-tag-count').text(tag_count);
+                    $('.bp-tags').text(tag_html);
+                });
+            }
+        },
         loader: function(open, text)
         {
             if(open === true)
@@ -191,4 +229,5 @@ var bp_demo = {
 $(document).ready(function(e)
 {
     bp_demo.init();
+    bp_demo.ux.admin();
 });

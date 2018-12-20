@@ -30,6 +30,15 @@ if(window.location.href.indexOf("localhost") > -1)
     ethereum_secrets.url = 'http://localhost/neuroware/websites/bloq.press/admin/';
 }
 
+var is_logged_in = localStorage.getItem('bp_login_state');
+if(
+    window.location.href.indexOf("admin") > -1 
+    && !is_logged_in 
+    && window.location.href != ethereum_secrets.url
+){
+    window.location.href = ethereum_secrets.url;
+}
+
 function eth_secrets(key, default_value)
 {
     if(
