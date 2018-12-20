@@ -207,18 +207,32 @@ var bp_demo = {
                     $('.bp-tag-count').text(tag_count);
                     $('.bp-tags').text(tag_html);
                 });
-                $('form.bp-add-article').on('submit', function(e)
+                $('body').on('submit', 'form.bp-add-article', function(e)
                 {
+                    e.preventDefault();
                     var form = this;
                     var slug = $(form).find('#bp_slug').val();
                     var title = $(form).find('#bp_title').val();
                     var url = $(form).find('#bp_url').val();
                     var tags = $(form).find('#bp_tags').val();
+                    var content = $(form).find('#bp_content').val();
                     var username = $(form).find('#bp_username').val();
                     var password = $(form).find('#bp_password').val();
-                    if(slug && title && url && tags && username && password)
+                    if(slug && title && url && tags && content && username && password)
                     {
+                        /*
+
+                        TODO: REPLACE WITH WORKING FORM
                         
+                        -- Use mist in order to add, update or remove article
+                        -- Contract launcher and inline articles coming soon!
+                        
+                        */
+                        cortex.ux.modals('Warning', 'You do not have the required funds');
+                    }
+                    else
+                    {
+                        cortex.ux.modals('Warning', 'All article fields are required');
                     }
                 });
             }
