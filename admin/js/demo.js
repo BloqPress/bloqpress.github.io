@@ -207,6 +207,20 @@ var bp_demo = {
                     $('.bp-tag-count').text(tag_count);
                     $('.bp-tags').text(tag_html);
                 });
+                $('form.bp-add-article').on('submit', function(e)
+                {
+                    var form = this;
+                    var slug = $(form).find('#bp_slug').val();
+                    var title = $(form).find('#bp_title').val();
+                    var url = $(form).find('#bp_url').val();
+                    var tags = $(form).find('#bp_tags').val();
+                    var username = $(form).find('#bp_username').val();
+                    var password = $(form).find('#bp_password').val();
+                    if(slug && title && url && tags && username && password)
+                    {
+                        
+                    }
+                });
             }
         },
         loader: function(open, text)
