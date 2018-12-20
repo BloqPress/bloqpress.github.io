@@ -38,4 +38,4 @@ Dashboard:
 
 #### Credits
 
-Maintained by [R1](http://r1.my) under MIT [LICENSE](LICENSE.md)
+Maintained by [R1](http://r1.my) under an [MIT LICENSE](LICENSE.md)
