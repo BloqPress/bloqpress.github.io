@@ -14,9 +14,11 @@ var bp_demo = {
                     var title = articles[i][1];
                     var url = articles[i][2];
                     var tags = articles[i][3];
-                    var description = articles[i][4];
+                    var time = articles[i][4];
+                    var description = articles[i][5];
                     var img = '<img class="img img-thumbnail img-responsive img-block" src="../img/'+slug+'.png" />';
                     var header = '<a href="'+url+'" target="_blank" class="card-img-top">'+img+'</a>';
+                    var ago = $.timeago(new Date(time * 1000));
                     if(tags)
                     {
                         var tag_array = tags.split(', ');
@@ -29,8 +31,8 @@ var bp_demo = {
                     {
                         content+= '<p>' + description + '</p><hr>';
                     };
-                    content+= '<small><a href="'+url+'" target="_blank">'+url+'</a></small>';
-                    html+= '<div class="col-md-4 iso'+tag_clases+'">';
+                    content+= '<small>Published ' + ago + '<br/>( <a href="'+url+'" target="_blank">'+url+'</a> )</small>';
+                    html+= '<div class="col-md-4 iso'+tag_clases+'" data-time="'+time+'">';
                         html+= '<div class="card iso">';
                             html+= header;
                             html+= '<div class="card-header">'+title+'</div>';
@@ -118,7 +120,18 @@ var bp_demo = {
         var $grid = $('.row.articles').isotope({
           // options
           itemSelector: '.col-md-4.iso',
-          layoutMode: 'masonry'
+          layoutMode: 'masonry',
+          getSortData: {
+            name: '.card-header',
+            newest: '[data-time] parseInt',
+            oldest: '[data-time] parseInt'
+          },
+          sortBy: 'new',
+          sortAscending: {
+            name: true,
+            newset: false,
+            oldest: true
+          }
         });
         $('.bp-filters').on( 'click', 'button', function() 
         {
@@ -128,6 +141,16 @@ var bp_demo = {
             $(this).removeClass('btn-secondary');
             var filterValue = $(this).attr('data-filter');
             $grid.isotope({ filter: filterValue });
+        });
+        $('.bp-sorts').on( 'click', 'button', function() 
+        {
+            $('.bp-sorts .btn-primary').addClass('btn-secondary');
+            $('.bp-sorts .btn-primary').removeClass('btn-primary');
+            $(this).addClass('btn-primary');
+            $(this).removeClass('btn-secondary');
+            var sortByValue = $(this).attr('data-sort-by');
+            console.log('sortByValue', sortByValue);
+            $grid.isotope({ sortBy: sortByValue });
         });
     },
     strings: {

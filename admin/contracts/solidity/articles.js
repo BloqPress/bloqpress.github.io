@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 // NeuroNet = 0x1AF56E2DBE9f53f80770fd674b44Ad67cD56119a
-// BloqPress-v0.0.2 = 0xfb75097C7Cf0960CF46A06eCD7fE65530495e40E
+// BloqPress-v0.0.2 = 0x1BA6014e5359f3a9B58E8A47456cF722d07ED9a2
 
 library SafeMath 
 {
@@ -297,6 +297,7 @@ contract Articles is Upgradable
         db.SetString(articleID(slug), 'title', stringToBytes32(title));
         db.SetString(articleID(slug), 'url', stringToBytes32(url));
         db.SetString(articleID(slug), 'tags', stringToBytes32(tags));
+        db.SetUint(articleID(slug), 'time', block.timestamp);
         db.SetUint(articleID(slug), 'index', db.getUint('articles').add(1));
         
         db.SetUint(db.getUint('articles').add(1), 'article_index', articleID(slug));
@@ -323,6 +324,8 @@ contract Articles is Upgradable
                 && stringToBytes32(tags) != stringToBytes32('')
             )
         );
+        
+        db.SetUint(articleID(slug), 'time', block.timestamp);
         
         if(
             db.GetString(articleID(slug), 'title') != stringToBytes32(title)
@@ -360,10 +363,19 @@ contract Articles is Upgradable
         db.SetString(articleID(slug), 'title', stringToBytes32(''));
         db.SetString(articleID(slug), 'url', stringToBytes32(''));
         db.SetString(articleID(slug), 'tags', stringToBytes32(''));
-        db.SetString(articleID(slug), 'index', 0);
+        db.SetUint(articleID(slug), 'index', 0);
+        db.SetUint(articleID(slug), 'time', 0);
         
         db.SetUint(index, 'article_index', lastArticle);
         db.setUint('articles', db.getUint('articles').sub(1));
+    }
+    
+    function updateArticleTime(string slug, uint time) public
+    {
+        require(users.userRoleBytes(msg.sender) == stringToBytes32('admin'));
+        require(db.GetBool(articleID(slug), 'article') == true);
+        
+        db.SetUint(articleID(slug), 'time', time);
     }
     
     function getArticles() public view returns(uint[])
@@ -385,13 +397,15 @@ contract Articles is Upgradable
         string slug,
         string title,
         string url,
-        string tags
+        string tags,
+        uint time
     ){
         return(
             bytes32ToString(getArticleSlugBytes(id)),
             bytes32ToString(getArticleTitleBytes(id)),
             bytes32ToString(getArticleUrlBytes(id)),
-            bytes32ToString(getArticleTagsBytes(id))
+            bytes32ToString(getArticleTagsBytes(id)),
+            getArticleTime(id)
         );
     }
     
@@ -469,5 +483,10 @@ contract Articles is Upgradable
     function getArticleTagsBytes(uint id) internal view returns(bytes32)
     {
         return db.GetString(id, 'tags');
+    }
+    
+    function getArticleTime(uint id) internal view returns(uint)
+    {
+        return db.GetUint(id, 'time');
     }
 }

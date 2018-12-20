@@ -22,6 +22,7 @@
 <script src="../admin/js/jquery.min.js"></script>
 <script src="../admin/js/bootstrap.js"></script>
 <script src="../admin/js/isotope.js"></script>
+<script src="../admin/js/ago.js"></script>
 <script src="../admin/secrets.js"></script>
 <script src="../admin/contracts.js"></script>
 <script src="../admin/js/web3.min.js"></script>
@@ -85,18 +86,25 @@
                 <br/>
                     <small>
                     CONTENT ON THIS PAGE IS POWERED BY SMART CONTRACTS<br />
-                    0xfb75097C7Cf0960CF46A06eCD7fE65530495e40E
+                    0x1BA6014e5359f3a9B58E8A47456cF722d07ED9a2
                     </small>
                 <br/><br/>
             </alert>
+            <small class="small-block">FILTER BY</small>
             <div class="col-md-12 bp-filters btn-group"></div>
+            <small class="small-block">SORT BY</small>
+            <div class="col-md-12 bp-sorts btn-group">
+                <button data-sort-by="name" class="btn btn-secondary">by name</button>
+                <button data-sort-by="newest" class="btn btn-primary">latest</button>
+                <button data-sort-by="oldest" class="btn btn-secondary">oldest</button>
+            </div>
         </div>
         
         <div 
              
              /* GET ARTICLE VIA SMART CONTRACTS */
              class="row bp articles" 
-             data-address="0xfb75097C7Cf0960CF46A06eCD7fE65530495e40E" 
+             data-address="0x1BA6014e5359f3a9B58E8A47456cF722d07ED9a2" 
              data-network="http://104.215.146.84:20545"
              
         ></div>

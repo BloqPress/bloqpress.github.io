@@ -78,6 +78,13 @@ h1.font-bold {
     font-size: 3em;
     font-weight: normal !important;
 }
+.small-block {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0 10px;
+}
 
 /*
 
@@ -104,6 +111,7 @@ ISOTOPE
 
 */
 
+.bp-sorts,
 .bp-filters {
     display: block;
     position: relative;
