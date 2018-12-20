@@ -41,6 +41,7 @@ var bp_cms = {
         {
             var articleID = Web3.prototype.sha3(network + '_' + address);
             localStorage.setItem('articles_' + articleID, JSON.stringify(articles));
+            localStorage.setItem('bp_article_v', ethereum_secrets.v);
         },
         stored: function(network, address, callback)
         {
@@ -49,6 +50,15 @@ var bp_cms = {
             if(localStorage.getItem('articles_' + articleID))
             {
                 articles = JSON.parse(localStorage.getItem('articles_' + articleID));
+            }
+            var stored_version = 0;
+            if(localStorage.getItem('bp_article_v'))
+            {
+                stored_version = localStorage.getItem('bp_article_v');
+            };
+            if(ethereum_secrets.v > stored_version)
+            {
+                articles = false;
             }
             callback(articles);
         }

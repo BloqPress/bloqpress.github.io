@@ -58,17 +58,17 @@ var bp_demo = {
                     bp_demo.html.articles(network, address, function(html)
                     {
                         $(wrapper).prepend(html);
+                        bp_demo.html.tags(network, address, function(html)
+                        {
+                            $('.bp-filters').html(html);
+                            setTimeout(function()
+                            {
+                                bp_demo.isotope();
+                                bp_demo.ux.loader(false);
+                            }, 1000);
+                        });
                     });
                 });
-                bp_demo.html.tags(network, address, function(html)
-                {
-                    $('.bp-filters').html(html);
-                });
-                setTimeout(function()
-                {
-                    bp_demo.isotope();
-                    bp_demo.ux.loader(false);
-                }, 1000);
             }
             else
             {
