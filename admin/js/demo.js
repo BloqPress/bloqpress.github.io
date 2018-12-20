@@ -32,7 +32,7 @@ var bp_demo = {
                         content+= '<p>' + description + '</p><hr>';
                     };
                     content+= '<small>Published ' + ago + '<br/>( <a href="'+url+'" target="_blank">'+url+'</a> )</small>';
-                    html+= '<div class="col-md-4 iso'+tag_clases+'" data-time="'+time+'">';
+                    html+= '<div class="col-md-4 iso'+tag_clases+'" data-new="'+time+'" data-old="'+time+'">';
                         html+= '<div class="card iso">';
                             html+= header;
                             html+= '<div class="card-header">'+title+'</div>';
@@ -123,13 +123,13 @@ var bp_demo = {
           layoutMode: 'masonry',
           getSortData: {
             name: '.card-header',
-            newest: '[data-time] parseInt',
-            oldest: '[data-time] parseInt'
+            newest: '[data-new] parseInt',
+            oldest: '[data-old] parseInt'
           },
-          sortBy: 'new',
+          sortBy: 'newest',
           sortAscending: {
             name: true,
-            newset: false,
+            newest: false,
             oldest: true
           }
         });
@@ -149,7 +149,6 @@ var bp_demo = {
             $(this).addClass('btn-primary');
             $(this).removeClass('btn-secondary');
             var sortByValue = $(this).attr('data-sort-by');
-            console.log('sortByValue', sortByValue);
             $grid.isotope({ sortBy: sortByValue });
         });
     },
