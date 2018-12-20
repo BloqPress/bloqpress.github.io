@@ -1,11 +1,24 @@
+```
+----------------------------------------------------------
+PLEASE NOTE THAT THIS IS A PRE-ALPHA PROOF OF CONCEPT ONLY
+----------------------------------------------------------
+```
+
 ### bloq.press
 ##### the smart contract based cms
 
-Documentation is in process and will be available soon.
+There is no documentation currently available.
 
-Homepage:
+All configuration options are available within `admin/secrets.js`.
 
-![HOMEPAGE](img/BP-HOME.png)
+The online demo is set to use the [Neuroware](http://neuroware.io) private network.
+
+These settings need to be changd within the `admin/secrets.js` file, or:
+
+* Send us an [email](mailto:founders@r1.my) and ask for some private ether
+* Deploy your own contracts on your own network or the public network
+
+Documentation is in process. In the meantime, please see the following screenshots:
 
 Articles:
 
@@ -15,6 +28,6 @@ Login:
 
 ![LOGIN](img/BP-LOGIN.png)
 
-Contract Explorer:
+Dashboard:
 
-![CONTRACTS](img/BP-CONTRACTS.png)
+![CONTRACTS](img/BP-DASHBOARD.png)
