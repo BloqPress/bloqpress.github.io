@@ -22,6 +22,8 @@ These settings need to be changd within the `admin/secrets.js` file, or:
 
 Documentation is in process. In the meantime, please see the following screenshots:
 
+---------
+
 Articles:
 
 ![ARTICLES](img/BP-ARTICLES.png)
