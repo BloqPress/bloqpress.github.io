@@ -1,43 +1,45 @@
 var bp_demo = {
     html: {
-        articles: function(network, address)
+        articles: function(network, address, callback)
         {
             var html = '';
             var all_tags = {};
-            var articles = bp_cms.articles.get(network, address);
-            for(i = 0; i < articles.length; i++)
+            bp_cms.articles.get(network, address, function(articles)
             {
-                var content = '';
-                var tag_clases = '';
-                var slug = articles[i][0];
-                var title = articles[i][1];
-                var url = articles[i][2];
-                var tags = articles[i][3];
-                var description = articles[i][4];
-                var img = '<img class="img img-thumbnail img-responsive img-block" src="../img/'+slug+'.png" />';
-                var header = '<a href="'+url+'" target="_blank" class="card-img-top">'+img+'</a>';
-                if(tags)
+                for(i = 0; i < articles.length; i++)
                 {
-                    var tag_array = tags.split(', ');
-                    $.each(tag_array, function(i)
+                    var content = '';
+                    var tag_clases = '';
+                    var slug = articles[i][0];
+                    var title = articles[i][1];
+                    var url = articles[i][2];
+                    var tags = articles[i][3];
+                    var description = articles[i][4];
+                    var img = '<img class="img img-thumbnail img-responsive img-block" src="../img/'+slug+'.png" />';
+                    var header = '<a href="'+url+'" target="_blank" class="card-img-top">'+img+'</a>';
+                    if(tags)
                     {
-                        tag_clases+= ' ' + tag_array[i];
-                    })
-                }
-                if(description)
-                {
-                    content+= '<p>' + description + '</p><hr>';
-                };
-                content+= '<small><a href="'+url+'" target="_blank">'+url+'</a></small>';
-                html+= '<div class="col-md-4 iso'+tag_clases+'">';
-                    html+= '<div class="card iso">';
-                        html+= header;
-                        html+= '<div class="card-header">'+title+'</div>';
-                        html+= '<div class="card-body">'+content+'</div>';
+                        var tag_array = tags.split(', ');
+                        $.each(tag_array, function(i)
+                        {
+                            tag_clases+= ' ' + tag_array[i];
+                        })
+                    }
+                    if(description)
+                    {
+                        content+= '<p>' + description + '</p><hr>';
+                    };
+                    content+= '<small><a href="'+url+'" target="_blank">'+url+'</a></small>';
+                    html+= '<div class="col-md-4 iso'+tag_clases+'">';
+                        html+= '<div class="card iso">';
+                            html+= header;
+                            html+= '<div class="card-header">'+title+'</div>';
+                            html+= '<div class="card-body">'+content+'</div>';
+                        html+= '</div>';
                     html+= '</div>';
-                html+= '</div>';
-            };
-            return html;
+                };
+                callback(html);
+            });
         },
         init: function()
         {
@@ -48,46 +50,63 @@ var bp_demo = {
                 bp_demo.ux.loader(true, 'FETCHING DATA');
                 $('.bp.articles').each(function()
                 {
+                    var wrapper = this;
                     address = $(this).attr('data-address');
                     network = $(this).attr('data-network');
-                    var html = bp_demo.html.articles(network, address);
-                    $(this).prepend(html);
+                    bp_demo.html.articles(network, address, function(html)
+                    {
+                        $(wrapper).prepend(html);
+                    });
                 });
-                $('.bp-filters').html(bp_demo.html.tags(network, address));
+                bp_demo.html.tags(network, address, function(html)
+                {
+                    $('.bp-filters').html(html);
+                });
                 setTimeout(function()
                 {
                     bp_demo.isotope();
                     bp_demo.ux.loader(false);
                 }, 1000);
             }
+            else
+            {
+                var network = ethereum_smart_contract_abis.cms[1].network;
+                var address = ethereum_smart_contract_abis.cms[1].address;
+                bp_cms.articles.get(network, address, function(article)
+                {
+
+                });
+            }
         },
-        tags: function(network, address)
+        tags: function(network, address, callback)
         {
             var filters = '';
             var all_tags = {};
-            var articles = bp_cms.articles.get(network, address);
-            for(i = 0; i < articles.length; i++)
+            bp_cms.articles.get(network, address, function(articles)
             {
-                var tags = articles[i][3];
-                if(tags)
+                for(i = 0; i < articles.length; i++)
                 {
-                    var tag_array = tags.split(', ');
-                    $.each(tag_array, function(i)
+                    var tags = articles[i][3];
+                    if(tags)
                     {
-                        if(typeof all_tags[tag_array[i]] == 'undefined')
+                        var tag_array = tags.split(', ');
+                        $.each(tag_array, function(i)
                         {
-                            all_tags[tag_array[i]] = 0;
-                        }
-                        all_tags[tag_array[i]]++;
-                    })
-                }
-            };
-            filters+= '<button data-filter="*" class="btn btn-primary">all</button>';
-            $.each(all_tags, function(k, v)
-            {
-                filters+= '<button data-filter=".'+k+'" class="btn btn-secondary">'+k+' <small>('+v+')</small></button>';
+                            if(typeof all_tags[tag_array[i]] == 'undefined')
+                            {
+                                all_tags[tag_array[i]] = 0;
+                            }
+                            all_tags[tag_array[i]]++;
+                        })
+                    }
+                };
+                filters+= '<button data-filter="*" class="btn btn-primary">all</button>';
+                $.each(all_tags, function(k, v)
+                {
+                    filters+= '<button data-filter=".'+k+'" class="btn btn-secondary">'+k+' <small>('+v+')</small></button>';
+                });
+                callback(filters);
             });
-            return filters;
         }
     },
     init: function()
