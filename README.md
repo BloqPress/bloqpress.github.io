@@ -1,11 +1,12 @@
 ```
-----------------------------------------------------------
-PLEASE NOTE THAT THIS IS A PRE-ALPHA PROOF OF CONCEPT ONLY
-----------------------------------------------------------
+
+-----------------------------------------------------------------------
+    PLEASE NOTE THAT THIS IS ONLY A PRE-ALPHA PROOF OF CONCEPT ONLY
+-----------------------------------------------------------------------
+
 ```
 
-### bloq.press
-##### the smart contract based cms
+### bloq.press #### - smart contract based cms
 
 There is no documentation currently available.
 
@@ -31,3 +32,7 @@ Login:
 Dashboard:
 
 ![CONTRACTS](img/BP-DASHBOARD.png)
+
+#### Credits
+
+Maintained by [R1](http://r1.my) under MIT [LICENSE](LICENSE.md)
