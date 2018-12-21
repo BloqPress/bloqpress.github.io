@@ -15,7 +15,10 @@ var bp_demo = {
                     var url = articles[i][2];
                     var tags = articles[i][3];
                     var time = articles[i][4];
-                    var description = articles[i][5];
+                    var author = articles[i][5];
+                    var description = articles[i][6];
+                    var comments = articles[i][7];
+                    
                     var img = '<img class="img img-thumbnail img-responsive img-block" src="../img/'+slug+'.png" />';
                     var header = '<a href="'+url+'" target="_blank" class="card-img-top">'+img+'</a>';
                     var ago = $.timeago(new Date(time * 1000));
@@ -31,7 +34,27 @@ var bp_demo = {
                     {
                         content+= '<p>' + description + '</p><hr>';
                     };
-                    content+= '<small>Published ' + ago + '<br/>( <a href="'+url+'" target="_blank">'+url+'</a> )</small>';
+                    content+= '<small>Published ' + ago;
+                    
+                    if(author)
+                    {
+                        content+= ' by ' + author;
+                    }
+                    
+                    if(comments && $.isArray(comments) && comments.length > 0)
+                    {
+                        content+= '<br/>Comments: ' + comments.length;
+                    }
+                    
+                    content+= '<br/>( <a href="'+url+'" target="_blank">'+url+'</a> )</small>';
+                    if(comments && $.isArray(comments) && comments.length > 0)
+                    {
+                        content+= '<hr>';
+                        for(c = 0; c < comments.length; c++)
+                        {
+                            content+= '<small class="bp-comment">' + comments[c] + '</small>';
+                        }
+                    }
                     html+= '<div class="col-md-4 iso'+tag_clases+'" data-new="'+time+'" data-old="'+time+'">';
                         html+= '<div class="card iso">';
                             html+= header;

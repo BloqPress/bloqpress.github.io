@@ -1,9 +1,6 @@
 pragma solidity ^0.4.18;
 
-// NeuroNet = 0x085C438D6BDC3af81B7BdcFDC5C228dc0160E353
-// BloqPress-v0.0.2 = 0xEF3302E7c71787f5847C99233B23F858696339C5
-
-// Mark Smalley = 0xB7a43A245e12b69Fd035EA95E710d17e71449f96
+// BloqPress-v0.0.2 = 0xa507D8CBA782904C5E788A2Dd4446ff32C3Ad0A0
 
 library SafeMath 
 {
@@ -125,6 +122,18 @@ contract AbleToUtilizeStrings
         }
         return string(s);
     }
+    
+    function stringToBytes(string s) internal pure returns (bytes)
+    {
+        bytes memory b = bytes(s);
+        return b;
+    }
+    
+    function bytesToString(bytes b) internal pure returns (string)
+    {
+        string memory s = string(b);
+        return s;
+    }
 }
 
 contract Upgradable is AbleToUtilizeStrings
@@ -202,26 +211,45 @@ contract Proxy is Upgradable
 
 contract Users is Upgradable
 {
+    function userRoleBytes(address Address) public view returns(bytes32);
+    function userNameBytes(address Address) public view returns(bytes32);
+}
+
+contract Articles is Upgradable
+{
+    function articleID(string slug) public view returns(uint256);
+}
+
+contract Comments is Upgradable
+{
     Proxy db;
+    Users users;
+    Articles articles;
     
     using SafeMath for uint;
     
     address public proxyContractAddress;
+    address public articleContractAddress;
+    address public userContractAddress;
     
-    mapping(address => bool) canWriteToUsers;
+    mapping(address => bool) canWriteToArticles;
     
     function () public payable 
     {
         revert();
     }
     
-    function Users
+    function Comments
     (
-        address proxyAddress
+        address proxyAddress,
+        address articleAddress,
+        address userAddress
     )
     public onlyAdmin
     {
         updateProxy(proxyAddress);
+        updateArticles(articleAddress);
+        updateUsers(userAddress);
     }
     
     function updateProxy(address proxyAddress) public onlyAdmin
@@ -230,16 +258,28 @@ contract Users is Upgradable
         proxyContractAddress = proxyAddress;
     }
     
+    function updateUsers(address userAddress) public onlyAdmin
+    {
+        users = Users(userAddress);
+        userContractAddress = userAddress;
+    }
+    
+    function updateArticles(address articleAddress) public onlyAdmin
+    {
+        articles = Articles(articleAddress);
+        articleContractAddress = articleAddress;
+    }
+    
     function addWriteAddress(address Address) public onlyAdmin
     {
-        require(canWriteToUsers[Address] == false);
-        canWriteToUsers[Address] = true;
+        require(canWriteToArticles[Address] == false);
+        canWriteToArticles[Address] = true;
     }
     
     function removeWriteAddress(address Address) public onlyAdmin
     {
-        require(canWriteToUsers[Address] == true);
-        canWriteToUsers[Address] = false;
+        require(canWriteToArticles[Address] == true);
+        canWriteToArticles[Address] = false;
     }
     
     function UID(string key) public view returns(uint256)
@@ -249,111 +289,106 @@ contract Users is Upgradable
     
     /*
     
-    USER ADMIN FUNCTIONALITY
+    COMMENT FUNCTIONALITY
     
     */
     
-    function userID(address Address, string key) public view returns(uint256)
+    function commentCount() public view returns(uint)
     {
-        return uint256(keccak256(toString(Address), '|', UID(key), '|', 'userID'));
+        return db.getUint('comments');
     }
     
-    function addUser(address Address, string role, string name) public onlyAdmin
+    function commentsCount(uint256 articleID) public view returns(uint)
     {
-        require(db.GetBool(userID(Address, 'bp'), 'user') == false);
-        db.SetBool(userID(Address, 'bp'), 'user', true);
-        db.SetString(userID(Address, 'bp'), 'role', stringToBytes32(role));
-        db.SetString(userID(Address, 'bp'), 'name', stringToBytes32(name));
+        return db.GetUint(articleID, 'comments');
     }
-        
-    function removeUser(address Address) public onlyAdmin
+    
+    function addComment(uint256 articleID, bytes32[] textArray, uint arrayLength) public
     {
-        require(db.GetBool(userID(Address, 'bp'), 'user') == true);
-        db.SetBool(userID(Address, 'bp'), 'user', false);
-        db.SetString(userID(Address, 'bp'), 'role', stringToBytes32(''));
-        db.SetString(userID(Address, 'bp'), 'name', stringToBytes32(''));
-    }
+        uint currentCommentCount = commentsCount(articleID);
+        uint256 commentID = uint256(keccak256(articleID, currentCommentCount, 'comment'));
         
-    function updateUser(address Address, string role, string name) public onlyAdmin
-    {
-        require(db.GetBool(userID(Address, 'bp'), 'user') == true);
+        require(users.userRoleBytes(msg.sender) == stringToBytes32('admin'));
+        require(db.GetUint(commentID, 'comment_chunks') == 0);
+        require(textArray.length == arrayLength);
         
-        require(
-            (
-                stringToBytes32(role) != stringToBytes32('')
-                && db.GetString(userID(Address, 'bp'), 'role') != stringToBytes32(role)
-            )
-            ||
-            (
-                stringToBytes32(name) != stringToBytes32('')
-                && db.GetString(userID(Address, 'bp'), 'name') != stringToBytes32(name)
-            )
-        );
+        db.SetUint(commentID, 'comment_chunks', arrayLength);
+        db.SetAddress(commentID, 'comment_owner', msg.sender);
         
-        if(
-            stringToBytes32(role) != stringToBytes32('')
-            && db.GetString(userID(Address, 'bp'), 'role') != stringToBytes32(role)
-        ){
-            db.SetString(userID(Address, 'bp'), 'role', stringToBytes32(role));
+        for (uint i = 0; i < arrayLength; i++) 
+        {
+            uint256 thisID = uint256(keccak256(commentID, '|', 'chunk', '|', i));
+            db.SetString(thisID, 'comment_chunk', textArray[i]);
         }
         
-        if(
-            stringToBytes32(name) != stringToBytes32('')
-            && db.GetString(userID(Address, 'bp'), 'name') != stringToBytes32(name)
-        ){
-            db.SetString(userID(Address, 'bp'), 'name', stringToBytes32(name));
+        db.setUint('comments', db.getUint('comments').add(1));
+        db.SetUint(articleID, 'comments', db.GetUint(articleID, 'comments').add(1));
+    }
+    
+    function editCommentText(uint256 articleID, uint commentIndex, bytes32[] textArray, uint arrayLength) public
+    {
+        uint256 commentID = uint256(keccak256(articleID, commentIndex, 'comment'));
+        
+        require(users.userRoleBytes(msg.sender) == stringToBytes32('admin'));
+        require(db.GetUint(commentID, 'comment_chunks') > 0);
+        require(textArray.length == arrayLength);
+        
+        db.SetUint(commentID, 'comment_chunks', arrayLength);
+        
+        for (uint i = 0; i < arrayLength; i++) 
+        {
+            uint256 thisID = uint256(keccak256(commentID, '|', 'chunk', '|', i));
+            db.SetString(thisID, 'comment_chunk', textArray[i]);
         }
     }
-     
+    
+    function editCommentOwner(uint256 articleID, uint commentIndex, address Address) public
+    {
+        uint256 commentID = uint256(keccak256(articleID, commentIndex, 'comment'));
         
-    /*
+        require(users.userRoleBytes(msg.sender) == stringToBytes32('admin'));
+        require(db.GetUint(commentID, 'comment_chunks') > 0);
+        
+        db.SetAddress(commentID, 'comment_owner', Address);
+    }
     
-    USER PUBLIC FUNCTIONALITY
+    function getCommentOwner(uint256 articleID, uint commentIndex) public view returns(address)
+    {
+        uint256 commentID = uint256(keccak256(articleID, commentIndex, 'comment'));
+        return db.GetAddress(commentID, 'comment_owner');
+    }
     
-    */
+    function getComments(uint256 articleID) public view returns(uint256[])
+    {
+        uint currentCommentCount = commentsCount(articleID);
+        uint256[] memory articleComments = new uint256[](currentCommentCount);
+        for (uint i = 0; i < currentCommentCount; i++) 
+        {
+            uint256 commentID = uint256(keccak256(articleID, i, 'comment'));
+            articleComments[i] = commentID;
+        }
+        return articleComments;
+    }
     
-    function getUserBytes(address Address) public view returns(
-        bytes32 role,
-        bytes32 name
-    ){
+    function getCommentByIndex(uint256 articleID, uint256 commentIndex) public view returns(
+        bytes32[] text,
+        address owner,
+        string author
+    )
+    {
+        uint256 commentID = uint256(keccak256(articleID, commentIndex, 'comment'));
+        uint chunkCount = db.GetUint(commentID, 'comment_chunks');
+        bytes32[] memory chunks = new bytes32[](chunkCount);
+        require(chunkCount > 0);
+        for (uint i = 0; i < chunkCount; i++) 
+        {
+            uint256 thisID = uint256(keccak256(commentID, '|', 'chunk', '|', i));
+            chunks[i] = db.GetString(thisID, 'comment_chunk');
+        }
         return(
-            userRoleBytes(Address),
-            userNameBytes(Address)
+            chunks,
+            db.GetAddress(commentID, 'comment_owner'),
+            bytes32ToString(users.userNameBytes(db.GetAddress(commentID, 'comment_owner')))
         );
-    }
-    
-    function getUser(address Address) public view returns(
-        string role,
-        string name
-    ){
-        return(
-            bytes32ToString(userRoleBytes(Address)),
-            bytes32ToString(userNameBytes(Address))
-        );
-    }
-        
-    function isUser(address Address) public view returns(bool)
-    {
-        return db.GetBool(userID(Address, 'bp'), 'user');
-    }
-        
-    function userRoleBytes(address Address) public view returns(bytes32)
-    {
-        return db.GetString(userID(Address, 'bp'), 'role');
-    }
-        
-    function userRole(address Address) public view returns(string)
-    {
-        return bytes32ToString(userRoleBytes(Address));
-    }
-    
-    function userNameBytes(address Address) public view returns(bytes32)
-    {
-        return db.GetString(userID(Address, 'bp'), 'name');
-    }
-        
-    function userName(address Address) public view returns(string)
-    {
-        return bytes32ToString(userNameBytes(Address));
     }
 }

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 // NeuroNet = 0x1AF56E2DBE9f53f80770fd674b44Ad67cD56119a
-// BloqPress-v0.0.2 = 0x1BA6014e5359f3a9B58E8A47456cF722d07ED9a2
+// BloqPress-v0.0.2 = 0x919637163B44393859DD47Dd6910964c4A606CED
 
 library SafeMath 
 {
@@ -213,6 +213,7 @@ contract Proxy is Upgradable
 contract Users is Upgradable
 {
     function userRoleBytes(address Address) public view returns(bytes32);
+    function userNameBytes(address Address) public view returns(bytes32);
 }
 
 contract Articles is Upgradable
@@ -298,56 +299,11 @@ contract Articles is Upgradable
         db.SetString(articleID(slug), 'url', stringToBytes32(url));
         db.SetString(articleID(slug), 'tags', stringToBytes32(tags));
         db.SetUint(articleID(slug), 'time', block.timestamp);
+        db.SetAddress(articleID(slug), 'owner', msg.sender);
         db.SetUint(articleID(slug), 'index', db.getUint('articles').add(1));
         
         db.SetUint(db.getUint('articles').add(1), 'article_index', articleID(slug));
         db.setUint('articles', db.getUint('articles').add(1));
-    }
-        
-    function updateArticle(string slug, string title, string url, string tags) public
-    {
-        require(users.userRoleBytes(msg.sender) == stringToBytes32('admin'));
-        require(db.GetBool(articleID(slug), 'article') == true);
-        require(
-            (
-                db.GetString(articleID(slug), 'title') != stringToBytes32(title)
-                && stringToBytes32(title) != stringToBytes32('')
-            )
-            || 
-            (
-                db.GetString(articleID(slug), 'url') != stringToBytes32(url)
-                && stringToBytes32(url) != stringToBytes32('')
-            )
-            || 
-            (
-                db.GetString(articleID(slug), 'tags') != stringToBytes32(tags)
-                && stringToBytes32(tags) != stringToBytes32('')
-            )
-        );
-        
-        db.SetUint(articleID(slug), 'time', block.timestamp);
-        
-        if(
-            db.GetString(articleID(slug), 'title') != stringToBytes32(title)
-            && stringToBytes32(title) != stringToBytes32('')
-        )
-        {
-            db.SetString(articleID(slug), 'title', stringToBytes32(title));
-        }
-        if(
-            db.GetString(articleID(slug), 'url') != stringToBytes32(url)
-            && stringToBytes32(url) != stringToBytes32('')
-        )
-        {
-            db.SetString(articleID(slug), 'url', stringToBytes32(url));
-        }
-        if(
-            db.GetString(articleID(slug), 'tags') != stringToBytes32(tags)
-            && stringToBytes32(tags) != stringToBytes32('')
-        )
-        {
-            db.SetString(articleID(slug), 'tags', stringToBytes32(tags));
-        }
     }
         
     function removeArticle(string slug) public
@@ -365,6 +321,7 @@ contract Articles is Upgradable
         db.SetString(articleID(slug), 'tags', stringToBytes32(''));
         db.SetUint(articleID(slug), 'index', 0);
         db.SetUint(articleID(slug), 'time', 0);
+        db.SetAddress(articleID(slug), 'owner', address(0));
         
         db.SetUint(index, 'article_index', lastArticle);
         db.setUint('articles', db.getUint('articles').sub(1));
@@ -372,10 +329,32 @@ contract Articles is Upgradable
     
     function updateArticleTime(string slug, uint time) public
     {
-        require(users.userRoleBytes(msg.sender) == stringToBytes32('admin'));
-        require(db.GetBool(articleID(slug), 'article') == true);
-        
+        require(isApproved(msg.sender, slug) == true);
         db.SetUint(articleID(slug), 'time', time);
+    }
+    
+    function updateArticleOwner(string slug, address Address) public
+    {
+        require(isApproved(msg.sender, slug) == true);
+        db.SetAddress(articleID(slug), 'owner', Address);
+    }
+    
+    function updateArticleTitle(string slug, string title) public
+    {
+        require(isApproved(msg.sender, slug) == true);
+        db.SetString(articleID(slug), 'title', stringToBytes32(title));
+    }
+    
+    function updateArticleUrl(string slug, string url) public
+    {
+        require(isApproved(msg.sender, slug) == true);
+        db.SetString(articleID(slug), 'url', stringToBytes32(url));
+    }
+    
+    function updateArticleTags(string slug, string tags) public
+    {
+        require(isApproved(msg.sender, slug) == true);
+        db.SetString(articleID(slug), 'tags', stringToBytes32(tags));
     }
     
     function getArticles() public view returns(uint[])
@@ -398,14 +377,16 @@ contract Articles is Upgradable
         string title,
         string url,
         string tags,
-        uint time
+        uint time,
+        string author
     ){
         return(
             bytes32ToString(getArticleSlugBytes(id)),
             bytes32ToString(getArticleTitleBytes(id)),
             bytes32ToString(getArticleUrlBytes(id)),
             bytes32ToString(getArticleTagsBytes(id)),
-            getArticleTime(id)
+            getArticleTime(id),
+            bytes32ToString(users.userNameBytes(getArticleOwner(id)))
         );
     }
     
@@ -454,9 +435,7 @@ contract Articles is Upgradable
             uint256 thisID = uint256(keccak256(id, '|', 'string_part', '|', i));
             results[i] = db.GetString(thisID, 'string_part');
         }
-        return(
-            results
-        );
+        return results;
     }
     
     /*
@@ -464,6 +443,20 @@ contract Articles is Upgradable
     INTERNAL FUNCTIONS
     
     */
+    
+    function isApproved(address Address, string slug) internal view returns(bool)
+    {
+        bytes32 role = users.userRoleBytes(Address);
+        bool got = db.GetBool(articleID(slug), 'article');
+        if(role == stringToBytes32('admin') && got == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
     function getArticleSlugBytes(uint id) internal view returns(bytes32)
     {
@@ -488,5 +481,10 @@ contract Articles is Upgradable
     function getArticleTime(uint id) internal view returns(uint)
     {
         return db.GetUint(id, 'time');
+    }
+    
+    function getArticleOwner(uint id) internal view returns(address)
+    {
+        return db.GetAddress(id, 'owner');
     }
 }
