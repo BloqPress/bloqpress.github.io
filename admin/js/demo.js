@@ -55,7 +55,7 @@ var bp_demo = {
                             content+= '<small class="bp-comment">' + comments[c] + '</small>';
                         }
                     }
-                    html+= '<div class="col-md-4 iso'+tag_clases+'" data-new="'+time+'" data-old="'+time+'">';
+                    html+= '<div class="col-md-4 iso'+tag_clases+'" data-new="'+time+'" data-old="'+time+'" data-comments="'+comments.length+'">';
                         html+= '<div class="card iso">';
                             html+= header;
                             html+= '<div class="card-header">'+title+'</div>';
@@ -147,13 +147,15 @@ var bp_demo = {
           getSortData: {
             name: '.card-header',
             newest: '[data-new] parseInt',
-            oldest: '[data-old] parseInt'
+            oldest: '[data-old] parseInt',
+            popularity: '[data-comments] parseInt'
           },
           sortBy: 'newest',
           sortAscending: {
             name: true,
             newest: false,
-            oldest: true
+            oldest: true,
+            popularity: false
           }
         });
         $('.bp-filters').on( 'click', 'button', function() 
