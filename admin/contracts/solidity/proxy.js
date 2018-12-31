@@ -1,7 +1,9 @@
 pragma solidity ^0.4.18;
 
-// Castor = 0x9230705e8c6436539Fe022a7b8816A71a185Fd93
+// /Applications/Mist.app/Contents/MacOS/Mist --rpc http://104.215.146.84:20545 --swarmurl null
+
 // BloqPress-v0.0.2 = 0x9F1d675b709Cc763AbACF01adcAB4AEfEa2E0d1E
+// BloqPress-v0.0.5 = 0xcE96A0FdDca68c16d142BA16B4FAbFd9E640F6FB
 
 library SafeMath 
 {
