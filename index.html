@@ -120,6 +120,8 @@
                         <div class="card-body">
                             <p><i class="fas fa-wallet fa-xl"></i></p>
                             <p>bloq.press is built upon a HTML5 browser based Ethereum wallet that can connect to any network and process any ERC20 tokens and (or) ERC721 assets</p>
+                            <hr>
+                            <button class="btn btn-secondary btn-block" data-toggle="modal" data-target="#wallet-modal">LEARN MORE</button>
                         </div>
                     </div>
                 </div>
@@ -129,6 +131,8 @@
                         <div class="card-body">
                             <p><i class="fas fa-layer-group fa-xl"></i></p>
                             <p>import and interact with any smart contract on any network - read public view functions for free or pay to use publicly available write functionality</p>
+                            <hr>
+                            <button class="btn btn-secondary btn-block" data-toggle="modal" data-target="#explorer-modal">LEARN MORE</button>
                         </div>
                     </div>
                 </div>
@@ -138,6 +142,8 @@
                         <div class="card-body">
                             <p><i class="fas fa-network-wired fa-xl"></i></p>
                             <p>the dynamic content found throught the various example implementations of bloq.press is powered by an exteniable system of upgradabable smart contracts</p>
+                            <hr>
+                            <button class="btn btn-secondary btn-block" data-toggle="modal" data-target="#cms-modal">LEARN MORE</button>
                         </div>
                     </div>
                 </div>
@@ -272,6 +278,73 @@
                 <div class="col-lg-4"></div>
             </div>
         </div>
+    </div>
+    
+    <!-- WALLET Modal -->
+    <div class="modal fade" id="wallet-modal" tabindex="-1" role="dialog" aria-labelledby="wallet-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">AGNOSTIC WALLET</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Supporting the following chains and protocols:</p>
+            <p>
+                - <strong>Ethereum</strong>: Public and Private
+                <br>- <strong>ERC20</strong>: Fungible Tokens
+                <br>- <strong>ERC721</strong>: Non-Fungible Assets
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- EXPLORER Modal -->
+    <div class="modal fade" id="explorer-modal" tabindex="-1" role="dialog" aria-labelledby="explorer-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">CONTRACT EXPLORER</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Featuring the following abstracted functionality:</p>
+            <p>
+                - <strong>Templates</strong>: Import bundled contracts
+                <br>- <strong>Freely Read</strong>: Access any public view from any contract
+                <br>- <strong>Paid Write</strong>: Utilize payable public functions too
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CMS Modal -->
+    <div class="modal fade" id="cms-modal" tabindex="-1" role="dialog" aria-labelledby="cms-modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">EXTENSIBLE CMS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Featuring the following core CMS contract components:</p>
+            <p>
+                - <strong>Types</strong>: Such as articles and pages
+                <br>- <strong>Entities</strong>: Such as users and contracts
+                <br>- <strong>Objects</strong>: Used for linking types to entities
+                <br>- <strong>Blobs</strong>: Used for storing meta attached to objects
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
     
     <small class="credits">
