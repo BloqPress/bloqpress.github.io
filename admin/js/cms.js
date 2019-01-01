@@ -19,42 +19,41 @@ var bp_cms = {
                 new Web3.providers.HttpProvider(network), 
                 "utils"
             );
-            var abi = ethereum_smart_contract_abis.cms[1].abi;
+            var abi = ethereum_smart_contract_abis.cms[2].abi;
+            var blob_abi = ethereum_smart_contract_abis.cms[4].abi;
+            var blob_address = ethereum_smart_contract_abis.cms[4].address;
             var contract = web3.eth.contract(JSON.parse(abi)).at(address);
-            var articleIDs = contract.getArticles();
+            var blobs = web3.eth.contract(JSON.parse(blob_abi)).at(blob_address);
+            var articleIDs = contract.getObjects('articles');
             
             bp_cms.articles.stored(network, address, function(stored_articles)
             {
                 if(articleIDs.length != stored_articles.length)
                 {
                     var completed_articles = 0;
-                    for(i = 0; i < articleIDs.length; i++)
+                    $.each(articleIDs, function(i)
                     {
-                        var article = contract.getArticle(articleIDs[i].toString());
+                        var article = contract.getObject(articleIDs[i].toString());
                         var description = '';
-                        var stringArray = contract.getLongString(articleIDs[i].toString());
+                        var stringArray = blobs.getArticleDescription(articleIDs[i].toString());
                         for(o = 0; o < stringArray.length; o++)
                         {
                             if(o > 0) description+= ' ';
                             description+= web3.toUtf8(stringArray[o]);
                         }
                         article.push(description);
-                        var comment_address = ethereum_smart_contract_abis.cms[2].address;
                         articles[i] = article;
-                        bp_cms.comments.get(network, comment_address, articleIDs[i].toString(), i, function(comments, c)
+                        bp_cms.comments.get(network, blob_address, articleIDs[i].toString(), i, function(comments, c)
                         {
                             articles[c].push(comments);
-                            if(completed_articles < articleIDs.length)
-                            {
-                                completed_articles++;
-                            }
-                            else
+                            completed_articles++;
+                            if(completed_articles >= articleIDs.length)
                             {
                                 bp_cms.articles.store(network, address, articles);
                                 callback(articles);
                             }
                         });
-                    }
+                    });
                 }
                 else
                 {
@@ -98,8 +97,15 @@ var bp_cms = {
                 "utils"
             );
             var abi = ethereum_smart_contract_abis.cms[2].abi;
+            var blob_abi = ethereum_smart_contract_abis.cms[4].abi;
+            var blob_address = ethereum_smart_contract_abis.cms[4].address;
             var contract = web3.eth.contract(JSON.parse(abi)).at(address);
-            var commentsIDs = contract.getComments(article);
+            var blobs = web3.eth.contract(JSON.parse(blob_abi)).at(blob_address);
+            var commentsIDs = blobs.getArticleComments(article);
+            
+            var entities_abi = ethereum_smart_contract_abis.cms[1].abi;
+            var entities_address = ethereum_smart_contract_abis.cms[1].address;
+            var entities = web3.eth.contract(JSON.parse(entities_abi)).at(entities_address);
             
             bp_cms.comments.stored(network, address, article, function(stored_comments)
             {
@@ -108,21 +114,25 @@ var bp_cms = {
                     for(i = 0; i < commentsIDs.length; i++)
                     {
                         var html = '';
-                        var comment = contract.getCommentByIndex(article, i);
+                        var comment = blobs.getArticleComment(article, i);
                         for(o = 0; o < comment[0].length; o++)
                         {
                             if(o > 0) html+= ' ';
                             html+= web3.toUtf8(comment[0][o]);
                         }
-                        comments.push(comment[2] + ':<br/>' + html);
+                        
+                        var author = entities.entityName(comment[1].toString(), 'users');
+                        comments.push('Comment #' + (i + 1) + ' by ' + author + ':<br/>' + html);
                     }
                     bp_cms.comments.store(network, address, article, comments);
+                    callback(comments, articleIndex); 
                 }
                 else
                 {
                     comments = stored_comments;
+                    bp_cms.comments.store(network, address, article, comments);
+                    callback(comments, articleIndex); 
                 }
-                callback(comments, articleIndex); 
             });
         },
         store: function(network, address, article, comments)

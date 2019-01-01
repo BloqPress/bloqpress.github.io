@@ -41,6 +41,11 @@ var bp_demo = {
                         content+= ' by ' + author;
                     }
                     
+                    if(tags)
+                    {
+                        content+= '<br/>Tagged with: ' + tags;
+                    }
+                    
                     if(comments && $.isArray(comments) && comments.length > 0)
                     {
                         content+= '<br/>Comments: ' + comments.length;
@@ -95,8 +100,8 @@ var bp_demo = {
             }
             else
             {
-                var network = ethereum_smart_contract_abis.cms[1].network;
-                var address = ethereum_smart_contract_abis.cms[1].address;
+                var network = ethereum_smart_contract_abis.cms[2].network;
+                var address = ethereum_smart_contract_abis.cms[2].address;
                 bp_cms.articles.get(network, address, function(article)
                 {
 

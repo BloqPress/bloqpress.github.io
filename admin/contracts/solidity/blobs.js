@@ -18,7 +18,7 @@ Examples of "objects" include "user posts" and "contract pages" ...
 
 */
 
-// BloqPress-v0.0.3 = 0x004f98aC9f71906C15a4B4e35957AD7D24D1DBCC
+// BloqPress-v0.0.3 = 0xf250310BD9dCf116cf9F3a0278922A5faD7bF63F
 
 library SafeMath 
 {
@@ -334,12 +334,14 @@ contract Blobs is Upgradable
         storeLongString(ID(id, article), textArray, arrayLength);
         db.setUint('comments', db.getUint('comments').add(1));
         db.SetUint(article, 'comments', db.GetUint(article, 'comments').add(1));
+        db.SetAddress(ID(id, article), 'commenter', msg.sender);
     }
     
-    function updateArticleComment(uint article, uint commentIndex, bytes32[] textArray, uint arrayLength) public
+    function updateArticleComment(uint article, uint commentIndex, address commenterAddress, bytes32[] textArray, uint arrayLength) public
     {
         string memory id = combine('com', '_', uintToString(commentIndex), '', '');
         updateLongString(ID(id, article), textArray, arrayLength);
+        db.SetAddress(ID(id, article), 'commenter', commenterAddress);
     }
     
     function removeArticleComment(uint article, uint commentIndex) public
@@ -348,12 +350,21 @@ contract Blobs is Upgradable
         removeLongString(ID(id, article));
         db.setUint('comments', db.getUint('comments').sub(1));
         db.SetUint(article, 'comments', db.GetUint(article, 'comments').sub(1));
+        db.SetAddress(ID(id, article), 'commenter', address(0));
     }
     
-    function getArticleComment(uint article, uint commentIndex) public view returns(bytes32[])
+    function getArticleComment(uint article, uint commentIndex) public view returns
+    (
+        bytes32[],
+        address
+    )
     {
         string memory id = combine('com', '_', uintToString(commentIndex), '', '');
-        return getLongString(ID(id, article));
+        return 
+        (
+            getLongString(ID(id, article)),
+            db.GetAddress(ID(id, article), 'commenter')
+        );
     }
     
     function getArticleComments(uint256 articleID) public view returns(uint256[])
