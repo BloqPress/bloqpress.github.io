@@ -1,5 +1,7 @@
 pragma solidity ^0.4.18;
 
+// BloqPress-v0.0.6 = 0xc4Acc3EfDaA0Ff0820022418c3DfAf1471494E29
+
 /*
 
 PROPOSED SETUP
@@ -17,8 +19,6 @@ Examples of "entities" include "users" and "contracts" ...
 Examples of "objects" include "user posts" and "contract pages" ...
 
 */
-
-// BloqPress-v0.0.5 = 0xe4fa79bC58c5930F42103D2F73F51b3242e3E77D
 
 library SafeMath 
 {

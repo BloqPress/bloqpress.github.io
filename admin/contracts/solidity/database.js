@@ -1,15 +1,28 @@
 pragma solidity ^0.4.18;
 
 // Neuron Admin = 0xB7a43A245e12b69Fd035EA95E710d17e71449f96
-// Neuron John = 0xA0d2736e921249278dA7E872694Ae25a38FB050f
-// Neuron Personal = 0xd1389b1a127603abff6f42f4c4e6894c6a968986
-// Neuron Trust = 0xCB61B1A451147cE8c03795dD153e2bA8F64D10d0
 
-// v001 = 0xbB86Da70912124B54E9958C55d721Af60b9AD444
-// Castor = 0x02825A0BdAB435B54113451B008740d58474F061
-// BloqPress-v0.0.2 = 0x02825A0BdAB435B54113451B008740d58474F061
+// /Applications/Mist.app/Contents/MacOS/Mist --rpc http://206.189.158.39:20545 --swarmurl null
 
-// /Applications/Mist.app/Contents/MacOS/Mist --rpc http://104.215.146.84:20545 --swarmurl null
+// BloqPress-v0.0.6 = 0x3D055B34a7164CB2CBB3efb78089D438B892E8E1
+
+/*
+
+BLOQPRESS SETUP
+
+1) Launch Database
+2) Launch Proxy then link Proxy to Database
+3) Launch Types then link Types to Proxy
+4) Launch Entities then link Entities to Proxy and Types
+5) Launch Objects then link Objects to Proxy, Types, and Entities
+6) Launch EditObjects then link EditObjects to Proxy, Types and Entities
+7) Launch Blobs then link Blobs to Proxy and Entities
+
+Examples of "types" include "posts" and "pages" ...
+Examples of "entities" include "users" and "contracts" ...
+Examples of "objects" include "user posts" and "contract pages" ...
+
+*/
 
 /*
 

@@ -1,5 +1,7 @@
 pragma solidity ^0.4.18;
 
+// BloqPress-v0.0.6 = 0xEa5A4D1db6ecD818f8CDDE8B498DE9b440985fc3
+
 /*
 
 PROPOSED SETUP
@@ -19,10 +21,6 @@ Examples of "objects" include "user posts" and "contract pages" ...
 */
 
 // Mark Smalley = 0xB7a43A245e12b69Fd035EA95E710d17e71449f96
-// John Smith = 0x4483ff876920950Ab386010591C77F6BCE0A15B3
-// Floyd Flinkle = 0xa467b015546fc89b5353b5c6c30fa0342892576c
-
-// BloqPress-v0.0.5 = 0xd6721dCf56Ceec7A122bAa20846e2B0127fE89fc
 
 library SafeMath 
 {

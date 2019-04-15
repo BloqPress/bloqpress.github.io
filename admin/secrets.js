@@ -3,11 +3,11 @@ var is_secretly_logged_in = localStorage.getItem('bpcms_key');
 var ethereum_secrets = {
     name: 'BloqPress',
     url: 'http://bloq.press/admin/',
-    v: 42,
+    v: 43,
     networks: [
         {
             name: 'NeuroNet',
-            address: 'http://104.215.146.84:20545'
+            address: 'http://206.189.158.39:20545'
         },
         {
             name: 'Localhost',

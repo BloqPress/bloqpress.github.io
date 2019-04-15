@@ -1,9 +1,6 @@
 pragma solidity ^0.4.18;
 
-// /Applications/Mist.app/Contents/MacOS/Mist --rpc http://104.215.146.84:20545 --swarmurl null
-
-// BloqPress-v0.0.2 = 0x9F1d675b709Cc763AbACF01adcAB4AEfEa2E0d1E
-// BloqPress-v0.0.5 = 0xcE96A0FdDca68c16d142BA16B4FAbFd9E640F6FB
+// BloqPress-v0.0.6 = 0xF4155aE008464a9C0220E6da039CE69CFE53a7C8
 
 library SafeMath 
 {
